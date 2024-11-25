@@ -15,7 +15,7 @@
                                 <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Author</th>
+                                        User</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Function</th>
                                     <th
@@ -36,13 +36,38 @@
                                                     <img src="/img/team-2.jpg" class="avatar avatar-sm me-3" alt="{{ $user->name }}">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $user->name }}</h6>
+                                                    <h6 class="mb-0 text-sm">{{ $user->username }}</h6>
                                                     <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
                                                 </div>
                                             </div>
+
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">Programator</p>
+                                            <p class="text-xs text-secondary mb-0">Developer</p>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm bg-gradient-success">Online</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="{{--{{route('users.edit', ['user' => $user])}}--}}" class="text-secondary font-weight-bold text-xs"
+                                               data-toggle="tooltip" data-original-title="Edit user">
+                                                Edit
+                                            </a>
+                                            <form action="{{--{{route('users.destroy', ['user' => $user])}}--}}" method="POST">
+                                                @method('DElETE')
+                                                @csrf
+                                                <button type="submit" class=" text-secondary font-weight-bold text-xs ms-3"
+                                                        data-toggle="tooltip" data-original-title="Delete user">
+                                                    Delete
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -52,3 +77,4 @@
         </div>
     </div>
 @endsection
+
