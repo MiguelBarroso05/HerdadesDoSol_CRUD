@@ -28,20 +28,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="/img/team-2.jpg" class="avatar avatar-sm me-3"
-                                                     alt="user1">
+                                @foreach($users as $user)
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    <img src="/img/team-2.jpg" class="avatar avatar-sm me-3" alt="{{ $user->name }}">
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $user->name }}</h6>
+                                                    <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
+                                                </div>
                                             </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">John Michael</h6>
-                                                <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
