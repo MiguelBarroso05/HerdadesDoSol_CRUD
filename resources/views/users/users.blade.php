@@ -7,7 +7,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Authors table</h6>
+                        <h6>Users table</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -52,15 +52,19 @@
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
                                         </td>
-                                        <td class="align-middle">
-                                            <a href="{{route('users.edit', $user)}}" class="text-secondary font-weight-bold text-xs"
+                                        <td class="align-middle d-flex justify-content-evenly">
+                                            <a href="{{route('users.show', $user)}}" class="btn btn-secondary btn-sm mr-2"
+                                               data-toggle="tooltip" data-original-title="Show user">
+                                                Show
+                                            </a>
+                                            <a href="{{route('users.edit', $user)}}" class="btn btn-secondary btn-sm mr-2"
                                                data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit
                                             </a>
                                             <form action="{{route('users.destroy', ['user' => $user])}}" method="POST">
                                                 @method('DElETE')
                                                 @csrf
-                                            <button type="submit" class=" text-secondary font-weight-bold text-xs ms-3"
+                                            <button type="submit" class="btn btn-secondary btn-sm"
                                                data-toggle="tooltip" data-original-title="Delete user">
                                                 Delete
                                             </button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         //
     }
@@ -34,9 +35,9 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        return view('users.show', ['user' => $user]);
     }
 
     /**
@@ -44,16 +45,22 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //dd($user);
         return view('users.edit', ['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        try{
+            $user->update($request->validated());
+            return redirect()->route('users.index')->with('success', 'User updated successfully');
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     /**

@@ -96,6 +96,17 @@
                                     <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password">
                                     @error('password') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
+                                <div class="flex flex-col mb-3">
+                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirm Password" aria-label="Password">
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <input type="text" name="firstname" class="form-control" placeholder="First Name" aria-label="Name" value="{{ old('firstname') }}" >
+                                    @error('firstname') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <input type="text" name="lastname" class="form-control" placeholder="Last Name" aria-label="Name" value="{{ old('lastname') }}" >
+                                    @error('lastname') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                </div>
                                 <div class="form-check form-check-info text-start">
                                     <input class="form-check-input" type="checkbox" name="terms" id="flexCheckDefault" >
                                     <label class="form-check-label" for="flexCheckDefault">
