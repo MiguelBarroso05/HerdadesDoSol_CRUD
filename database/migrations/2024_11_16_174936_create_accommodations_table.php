@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('accommodations', function (Blueprint $table) {
             $table->id();
+            $table->integer('size');
+            $table->enum('roomType',['individual beds','bunkbed','king size bed']);
+            $table->string('description');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

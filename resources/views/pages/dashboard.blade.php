@@ -2,8 +2,8 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Dashboard'])
-    <div class="container-fluid py-4">
-        <div class="row justify-content-center">
+    <div class="container-fluid py-4 flex-grow-1">
+        <div class="row justify-content-between">
             <!-- Top Horizontal Information -->
 
             <!-- End of the 1º -->
@@ -24,7 +24,8 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                                <div
+                                    class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
                                     <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -50,7 +51,8 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                <div
+                                    class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
                                     <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -75,7 +77,8 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                                <div
+                                    class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
                                     <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -114,7 +117,8 @@
                                         <i class="ni ni-camera-compact text-dark opacity-10"></i>
                                     </div>
                                     <h5 class="text-white mb-1">Get started with Argon</h5>
-                                    <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
+                                    <p>There’s nothing I really wanted to do in life that I wasn’t able to get good
+                                        at.</p>
                                 </div>
                             </div>
                             <div class="carousel-item h-100" style="background-image: url('./img/carousel-2.jpg');
@@ -135,17 +139,18 @@
                                         <i class="ni ni-trophy text-dark opacity-10"></i>
                                     </div>
                                     <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                                    <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
+                                    <p>Don’t be afraid to be wrong because you can’t learn anything from a
+                                        compliment.</p>
                                 </div>
                             </div>
                         </div>
                         <button class="carousel-control-prev w-5 me-3" type="button"
-                            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
                         <button class="carousel-control-next w-5 me-3" type="button"
-                            data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
@@ -167,130 +172,130 @@
                     <div class="table-responsive">
                         <table class="table align-items-center ">
                             <tbody>
-                                <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
-                                                <img src="./img/icons/flags/US.png" alt="Country flag">
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                                <h6 class="text-sm mb-0">United States</h6>
-                                            </div>
+                            <tr>
+                                <td class="w-30">
+                                    <div class="d-flex px-2 py-1 align-items-center">
+                                        <div>
+                                            <img src="./img/icons/flags/US.png" alt="Country flag">
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                            <h6 class="text-sm mb-0">2500</h6>
+                                        <div class="ms-4">
+                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
+                                            <h6 class="text-sm mb-0">United States</h6>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                            <h6 class="text-sm mb-0">$230,900</h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
+                                        <h6 class="text-sm mb-0">2500</h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
+                                        <h6 class="text-sm mb-0">$230,900</h6>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-sm">
+                                    <div class="col text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
+                                        <h6 class="text-sm mb-0">29.9%</h6>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-30">
+                                    <div class="d-flex px-2 py-1 align-items-center">
+                                        <div>
+                                            <img src="./img/icons/flags/DE.png" alt="Country flag">
                                         </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                            <h6 class="text-sm mb-0">29.9%</h6>
+                                        <div class="ms-4">
+                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
+                                            <h6 class="text-sm mb-0">Germany</h6>
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
-                                                <img src="./img/icons/flags/DE.png" alt="Country flag">
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                                <h6 class="text-sm mb-0">Germany</h6>
-                                            </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
+                                        <h6 class="text-sm mb-0">3.900</h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
+                                        <h6 class="text-sm mb-0">$440,000</h6>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-sm">
+                                    <div class="col text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
+                                        <h6 class="text-sm mb-0">40.22%</h6>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-30">
+                                    <div class="d-flex px-2 py-1 align-items-center">
+                                        <div>
+                                            <img src="./img/icons/flags/GB.png" alt="Country flag">
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                            <h6 class="text-sm mb-0">3.900</h6>
+                                        <div class="ms-4">
+                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
+                                            <h6 class="text-sm mb-0">Great Britain</h6>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                            <h6 class="text-sm mb-0">$440,000</h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
+                                        <h6 class="text-sm mb-0">1.400</h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
+                                        <h6 class="text-sm mb-0">$190,700</h6>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-sm">
+                                    <div class="col text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
+                                        <h6 class="text-sm mb-0">23.44%</h6>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-30">
+                                    <div class="d-flex px-2 py-1 align-items-center">
+                                        <div>
+                                            <img src="./img/icons/flags/BR.png" alt="Country flag">
                                         </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                            <h6 class="text-sm mb-0">40.22%</h6>
+                                        <div class="ms-4">
+                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
+                                            <h6 class="text-sm mb-0">Brasil</h6>
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
-                                                <img src="./img/icons/flags/GB.png" alt="Country flag">
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                                <h6 class="text-sm mb-0">Great Britain</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                            <h6 class="text-sm mb-0">1.400</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                            <h6 class="text-sm mb-0">$190,700</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                            <h6 class="text-sm mb-0">23.44%</h6>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
-                                                <img src="./img/icons/flags/BR.png" alt="Country flag">
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                                <h6 class="text-sm mb-0">Brasil</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                            <h6 class="text-sm mb-0">562</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                            <h6 class="text-sm mb-0">$143,960</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                            <h6 class="text-sm mb-0">32.14%</h6>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
+                                        <h6 class="text-sm mb-0">562</h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
+                                        <h6 class="text-sm mb-0">$143,960</h6>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-sm">
+                                    <div class="col text-center">
+                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
+                                        <h6 class="text-sm mb-0">32.14%</h6>
+                                    </div>
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -316,7 +321,8 @@
                                 </div>
                                 <div class="d-flex">
                                     <button
-                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
+                                        <i
                                             class="ni ni-bold-right" aria-hidden="true"></i></button>
                                 </div>
                             </li>
@@ -333,7 +339,8 @@
                                 </div>
                                 <div class="d-flex">
                                     <button
-                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
+                                        <i
                                             class="ni ni-bold-right" aria-hidden="true"></i></button>
                                 </div>
                             </li>
@@ -350,7 +357,8 @@
                                 </div>
                                 <div class="d-flex">
                                     <button
-                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
+                                        <i
                                             class="ni ni-bold-right" aria-hidden="true"></i></button>
                                 </div>
                             </li>
@@ -366,7 +374,8 @@
                                 </div>
                                 <div class="d-flex">
                                     <button
-                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
+                                        <i
                                             class="ni ni-bold-right" aria-hidden="true"></i></button>
                                 </div>
                             </li>
@@ -375,8 +384,8 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
     </div>
+    @include('layouts.footers.footer')
 @endsection
 
 @push('js')

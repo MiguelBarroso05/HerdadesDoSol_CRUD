@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                             </form>
-                            @include('layouts.footers.auth.footer')
+                            @include('layouts.footers.footer')
                         </div>
 @endsection
 

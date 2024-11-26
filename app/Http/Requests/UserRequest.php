@@ -31,6 +31,21 @@ class UserRequest extends FormRequest
             'password' => $id ? 'nullable|min:8' : 'required|min:8', // Senha obrigatória na criação, opcional na atualização
         ];
     }
+/*
+    public function Updaterules(): array
+    {
+        $id = $this->route('user'); // Captura o ID se for atualização (rota deve incluir {id})
+
+        return [
+            'username' => 'required|unique:users,username' . ($id ? ',' . $id : '') . '|min:3|max:50',
+            'email' => 'required|email|unique:users,email' . ($id ? ',' . $id : ''),
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'password' => $id ? 'nullable|min:8' : 'required|min:8', // Senha obrigatória na criação, opcional na atualização
+        ];
+    }
+*/
+
 
     public function messages()
     {

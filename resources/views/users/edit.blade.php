@@ -56,7 +56,8 @@
                                 @if(session('success'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         <strong>Success!</strong> {{ session('success') }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
                                     </div>
                                 @endif
                                 @if($errors->any())
@@ -67,7 +68,8 @@
                                             @endforeach
                                         </ul>
 
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
                                     </div>
                                 @endif
                                 <div class="card">
@@ -75,8 +77,10 @@
                                         <div class="d-flex align-items-center justify-content-between">
                                             <p class="mb-0">Edit User</p>
                                             <div>
-                                                <a href="{{ url()->previous()}}" class="btn btn-secondary btn-sm ms-auto">Cancel</a>
-                                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Update</button>
+                                                <a href="{{ url()->previous()}}"
+                                                   class="btn btn-secondary btn-sm ms-auto">Cancel</a>
+                                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Update
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -87,9 +91,11 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input"
                                                            class="form-control-label">Username</label>
-                                                    <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" value="{{old('username', $user->username)}}">
+                                                    <input class="form-control @error('username') is-invalid @enderror"
+                                                           type="text" name="username"
+                                                           value="{{old('username', $user->username)}}">
                                                     @error('username')
-                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -97,9 +103,11 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">Email
                                                         address</label>
-                                                    <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{old('email', $user->email)}}">
+                                                    <input class="form-control @error('email') is-invalid @enderror"
+                                                           type="email" name="email"
+                                                           value="{{old('email', $user->email)}}">
                                                     @error('email')
-                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -107,9 +115,11 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">First
                                                         name</label>
-                                                    <input class="form-control @error('firstname') is-invalid @enderror" name="firstname" type="text" value="{{old('firstname', $user->firstname)}}">
+                                                    <input class="form-control @error('firstname') is-invalid @enderror"
+                                                           name="firstname" type="text"
+                                                           value="{{old('firstname', $user->firstname)}}">
                                                     @error('firstname')
-                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -117,9 +127,11 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">Last
                                                         name</label>
-                                                    <input class="form-control @error('lastname') is-invalid @enderror" name="lastname" type="text" value="{{old('lastname', $user->lastname)}}">
+                                                    <input class="form-control @error('lastname') is-invalid @enderror"
+                                                           name="lastname" type="text"
+                                                           value="{{old('lastname', $user->lastname)}}">
                                                     @error('lastname')
-                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -139,21 +151,24 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input"
                                                            class="form-control-label">City</label>
-                                                    <input class="form-control" type="text" name="city" value="{{old('city', $user->city)}}">
+                                                    <input class="form-control" type="text" name="city"
+                                                           value="{{old('city', $user->city)}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="example-text-input"
                                                            class="form-control-label">Country</label>
-                                                    <input class="form-control" type="text" name="country" value="{{old('country', $user->country)}}">
+                                                    <input class="form-control" type="text" name="country"
+                                                           value="{{old('country', $user->country)}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">Postal
                                                         code</label>
-                                                    <input class="form-control" type="text" name="postal" value="{{old('postal', $user->postal)}}">
+                                                    <input class="form-control" type="text" name="postal"
+                                                           value="{{old('postal', $user->postal)}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -233,6 +248,6 @@
                                  </div>
                              </div>
                          </div>-->
-                            @include('layouts.footers.auth.footer')
+                            @include('layouts.footers.footer')
                         </div>
 @endsection

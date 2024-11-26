@@ -73,7 +73,8 @@
                                                     <label for="example-text-input"
                                                            class="form-control-label">Activity Description</label>
                                                     <textarea
-                                                        class="form-control @error('description') is-invalid @enderror" name="description">{{old('description')}}</textarea>
+                                                            class="form-control @error('description') is-invalid @enderror"
+                                                            name="description">{{old('description')}}</textarea>
                                                     @error('description')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
@@ -83,7 +84,7 @@
                                     </div>
                                 </div>
                             </form>
-                            @include('layouts.footers.auth.footer')
+                            @include('layouts.footers.footer')
                         </div>
 @endsection
 

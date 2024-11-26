@@ -172,6 +172,6 @@
                                  </div>
                              </div>
                          </div>-->
-                            @include('layouts.footers.auth.footer')
+                            @include('layouts.footers.footer')
                         </div>
 @endsection

@@ -15,13 +15,16 @@
                                 <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        User</th>
+                                        User
+                                    </th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Status</th>
+                                        Status
+                                    </th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Employed</th>
+                                        Employed
+                                    </th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                                 </thead>
@@ -41,31 +44,44 @@
 
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm {{ $user->isActive ? 'bg-gradient-success' : 'bg-gradient-secondary' }}">{{ $user->isActive ? 'Active' : 'Inactive' }}</span>
+                                            <span
+                                                class="badge badge-sm {{ is_null($user->deleted_at) ? 'bg-gradient-success' : 'bg-gradient-secondary' }}">{{ is_null($user->deleted_at) ? 'Active' : 'Inactive' }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                            <span class="text-secondary text-xs font-weight-bold">{{ is_null($user->deleted_at) ? $user->created_at->format('d/m/Y') : $user->deleted_at->format('d/m/Y') }}</span>
                                         </td>
                                         <td class="align-middle d-flex justify-content-evenly">
-                                            <a href="{{route('users.show', $user)}}" class="btn btn-secondary btn-sm mr-2"
+                                            <a href="{{route('users.show', $user)}}"
+                                               class="btn btn-secondary btn-sm mr-2"
                                                data-toggle="tooltip" data-original-title="Show user">
                                                 Show
                                             </a>
-                                            <a href="{{route('users.edit', $user)}}" class="btn btn-secondary btn-sm mr-2"
+                                            <a href="{{route('users.edit', $user)}}"
+                                               class="btn btn-secondary btn-sm mr-2"
                                                data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit
                                             </a>
-                                            <form action="{{route('users.destroy', ['user' => $user])}}" method="POST">
-                                                @method('DElETE')
-                                                @csrf
-                                            <button type="submit" class="btn btn-secondary btn-sm"
-                                               data-toggle="tooltip" data-original-title="Delete user">
-                                                Delete
-                                            </button>
-                                            </form>
+                                            @if(is_null($user->deleted_at))
+                                                <form action="{{route('users.destroy', ['user' => $user])}}" method="POST">
+                                                    @method('DElETE')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-secondary btn-sm"
+                                                            data-toggle="tooltip" data-original-title="Delete user">
+                                                        Disable
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <form action="{{route('users.recover', ['user' => $user])}}" method="POST">
+                                                     @csrf
+                                                <button type="submit" class="btn btn-secondary btn-sm"
+                                                        data-toggle="tooltip" data-original-title="Delete user">
+                                                    Activate
+                                                </button>
+                                                </form>
+                                            @endif
                                         </td>
                                     </tr>
-                                   @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
