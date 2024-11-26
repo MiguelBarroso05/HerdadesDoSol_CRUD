@@ -16,8 +16,6 @@
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         User</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Function</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Status</th>
@@ -33,7 +31,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="/img/team-2.jpg" class="avatar avatar-sm me-3" alt="{{ $user->name }}">
+                                                    <img src="/img/team-2.jpg" class="avatar avatar-sm me-3" alt="#">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $user->username }}</h6>
@@ -42,12 +40,8 @@
                                             </div>
 
                                         </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                            <p class="text-xs text-secondary mb-0">Developer</p>
-                                        </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">Online</span>
+                                            <span class="badge badge-sm {{ $user->isActive ? 'bg-gradient-success' : 'bg-gradient-secondary' }}">{{ $user->isActive ? 'Active' : 'Inactive' }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">23/04/18</span>

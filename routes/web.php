@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
     #Routes Accommodation
 
     #Routes Activities
-    Route::resource('activities', UserController::class);
+    Route::resource('activities', ActivityController::class);
 
 
     Route::get('/{page}', [PageController::class, 'index'])->name('page');

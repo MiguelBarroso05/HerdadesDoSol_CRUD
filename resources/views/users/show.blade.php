@@ -53,7 +53,7 @@
                             <div class="card">
                                 <div class="card-header pb-0">
                                     <div class="d-flex align-items-center">
-                                        <p class="mb-0">Show Profile</p>
+                                        <p class="mb-0">Show User</p>
                                         <a href="{{route('users.edit', $user)}}" class="btn btn-primary btn-sm ms-auto">Edit</a>
                                     </div>
                                 </div>

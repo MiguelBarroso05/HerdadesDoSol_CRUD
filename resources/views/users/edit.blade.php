@@ -73,7 +73,7 @@
                                 <div class="card">
                                     <div class="card-header pb-0">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <p class="mb-0">Edit Profile</p>
+                                            <p class="mb-0">Edit User</p>
                                             <div>
                                                 <a href="{{ url()->previous()}}" class="btn btn-secondary btn-sm ms-auto">Cancel</a>
                                                 <button type="submit" class="btn btn-primary btn-sm ms-auto">Update</button>
