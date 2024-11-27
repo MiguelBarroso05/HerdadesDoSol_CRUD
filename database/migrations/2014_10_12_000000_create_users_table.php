@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('country')->nullable();
             $table->string('postal')->nullable();
-            $table->text('about')->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

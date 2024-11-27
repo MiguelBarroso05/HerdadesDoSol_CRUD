@@ -32,3 +32,22 @@
     }
 }
 
+/*Room Type Accommodation*/
+/* .select-container {
+     position: relative !important;
+     display: inline-block !important;
+ }
+
+.select-container i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.select-container select {
+    padding-left: 30px; !* Ajuste conforme necessário *!
+}*/
+
+

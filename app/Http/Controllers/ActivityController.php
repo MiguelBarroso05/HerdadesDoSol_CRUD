@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ActivityRequest;
 use App\Models\Activity;
+use App\Models\User;
+
 class ActivityController extends Controller
 {
     public function index()
     {
-        return view('activities.activities',['activities'=>Activity::all()]);
+        return view('activities.activities', ['activities' => Activity::withoutTrashed()->get()]);
     }
 
     public function create(){

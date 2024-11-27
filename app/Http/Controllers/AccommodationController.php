@@ -2,9 +2,90 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AccommodationRequest;
+use App\Http\Requests\UserRequest;
+use App\Models\Accommodation;
+use App\Models\Activity;
+use App\Models\RoomType;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AccommodationController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $accommodations = Accommodation::withoutTrashed()->get();
+        $room_types = RoomType::withoutTrashed()->get();
+        return view('accommodations.accommodations', compact('accommodations', 'room_types'));
+    }
 
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $room_types = RoomType::withoutTrashed()->get();
+        return view('accommodations.create', compact('room_types'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(AccommodationRequest $request)
+    {
+        $validated = $request->validated();
+
+        try{
+            $accommodation = new Accommodation($validated);
+            $accommodation->save();
+            return redirect()->route('accommodation.index')->with('success', 'Accommodation created successfully');
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Accommodation $accommodation)
+    {
+        return view('accommodation.show', ['accommodation' => $accommodation]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Accommodation $accommodation)
+    {
+        $room_types = RoomType::withoutTrashed()->get();
+        return view('accommodation.edit', ['accommodation' => $accommodation, 'room_types' => $room_types]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(AccommodationRequest $request, $id)
+    {
+        $accommodation = Accommodation::all()->findOrFail($id);
+        try{
+            $accommodation->update($request->validated());
+            return redirect()->route('accommodation.index')->with('success', 'Accommodation updated successfully');
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Accommodation $accommodation)
+    {
+        $accommodation->delete();
+        return redirect()->route('accommodation.index');
+    }
 }

@@ -25,7 +25,12 @@
                                 <div class="card-header pb-0">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <p class="mb-0">Show Activity</p>
-
+                                        <div>
+                                            <a href="{{route('activities.index')}}"
+                                               class="btn btn-secondary btn-sm ms-auto">Cancel</a>
+                                            <a type="submit" class="btn btn-primary btn-sm ms-auto" href="{{route('activities.edit', $activity)}}">Edit
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card-body">

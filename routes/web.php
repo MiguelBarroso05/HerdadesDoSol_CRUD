@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccommodationController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -31,7 +32,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/users/{user}/recover', [UserController::class, 'recover'])->name('users.recover');
     Route::resource('users', UserController::class);
 
-    #Routes Accommodation
+    #Routes RoomTypes
+    Route::resource('room_types', RoomTypeController::class);
+
+    #Routes Accommodations
     Route::resource('accommodations', AccommodationController::class);
 
     #Routes Activities

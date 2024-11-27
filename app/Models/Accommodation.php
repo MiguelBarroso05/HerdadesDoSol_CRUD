@@ -10,4 +10,7 @@ class Accommodation extends Model
 {
     /** @use HasFactory<\Database\Factories\AccommodationFactory> */
     use HasFactory, softDeletes;
+
+    protected $fillable = ['size','room_type_id', 'description'];
+
 }
