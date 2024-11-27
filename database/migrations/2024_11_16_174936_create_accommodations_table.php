@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('accommodations', function (Blueprint $table) {
             $table->id();
             $table->integer('size');
-            $table->foreignId('room_type_id')->constrained();
+            $table->foreignId('accommodation_type_id')->constrained();
             $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();

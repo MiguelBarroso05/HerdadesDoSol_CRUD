@@ -6,21 +6,18 @@
         <div class="card-body p-3">
             <div class="row gx-4">
                 <div class="col-auto">
-                    <div class="avatar avatar-xl position-relative">
-                        <img src="/img/team-1.jpg" alt="activity_image" class="w-100 border-radius-lg shadow-sm">
-                    </div>
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            New Room Type
+                            New Accommodation Type
                         </h5>
                     </div>
                 </div>
                 <div class="container-fluid py-4">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
-                            <form method="POST" action="{{route('room_types.update', $room_type->id)}}">
+                            <form method="POST" action="{{route('accommodation_types.update', $room_type->id)}}">
                                 @csrf
                                 @method('PUT')
                                 @if(session('success'))
@@ -45,7 +42,7 @@
                                 <div class="card">
                                     <div class="card-header pb-0">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <p class="mb-0">New Room Type</p>
+                                            <p class="mb-0">New Accommodation Type</p>
                                             <div>
                                                 <a href="{{ url()->previous()}}"
                                                    class="btn btn-secondary btn-sm ms-auto">Cancel</a>
@@ -55,15 +52,15 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <p class="text-uppercase text-sm">Room Type Information</p>
+                                        <p class="text-uppercase text-sm">Accommodation Type Information</p>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input"
-                                                           class="form-control-label">Room Type Name</label>
+                                                           class="form-control-label">Accommodation Type Name</label>
                                                     <input class="form-control @error('name') is-invalid @enderror"
                                                            type="text" name="name"
-                                                           value="{{old('name', $room_type->name)}}">
+                                                           value="{{old('name', $accommodation_type->name)}}">
                                                     @error('name')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
@@ -73,8 +70,8 @@
                                     </div>
                                 </div>
                             </form>
-                            @include('layouts.footers.footer')
                         </div>
+    @include('layouts.footers.footer')
 @endsection
 
 

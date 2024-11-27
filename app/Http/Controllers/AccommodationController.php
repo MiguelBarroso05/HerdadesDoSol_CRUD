@@ -6,7 +6,7 @@ use App\Http\Requests\AccommodationRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\Accommodation;
 use App\Models\Activity;
-use App\Models\RoomType;
+use App\Models\AccommodationType;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,9 +17,8 @@ class AccommodationController extends Controller
      */
     public function index()
     {
-        $accommodations = Accommodation::withoutTrashed()->get();
-        $room_types = RoomType::withoutTrashed()->get();
-        return view('accommodations.accommodations', compact('accommodations', 'room_types'));
+        $accommodations = Accommodation::with('roomType')->get();
+        return view('accommodations.accommodations', compact('accommodations'));
     }
 
     /**
@@ -27,7 +26,7 @@ class AccommodationController extends Controller
      */
     public function create()
     {
-        $room_types = RoomType::withoutTrashed()->get();
+        $room_types = AccommodationType::withoutTrashed()->get();
         return view('accommodations.create', compact('room_types'));
     }
 
@@ -41,7 +40,7 @@ class AccommodationController extends Controller
         try{
             $accommodation = new Accommodation($validated);
             $accommodation->save();
-            return redirect()->route('accommodation.index')->with('success', 'Accommodation created successfully');
+            return redirect()->route('accommodations.index')->with('success', 'Accommodation created successfully');
         }
         catch(\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
@@ -53,7 +52,7 @@ class AccommodationController extends Controller
      */
     public function show(Accommodation $accommodation)
     {
-        return view('accommodation.show', ['accommodation' => $accommodation]);
+        return view('accommodations.show', ['accommodation' => $accommodation]);
     }
 
     /**
@@ -61,8 +60,7 @@ class AccommodationController extends Controller
      */
     public function edit(Accommodation $accommodation)
     {
-        $room_types = RoomType::withoutTrashed()->get();
-        return view('accommodation.edit', ['accommodation' => $accommodation, 'room_types' => $room_types]);
+        return view('accommodations.edit', ['accommodation' => $accommodation]);
     }
 
     /**
@@ -73,7 +71,7 @@ class AccommodationController extends Controller
         $accommodation = Accommodation::all()->findOrFail($id);
         try{
             $accommodation->update($request->validated());
-            return redirect()->route('accommodation.index')->with('success', 'Accommodation updated successfully');
+            return redirect()->route('accommodations.index')->with('success', 'Accommodation updated successfully');
         }
         catch(\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
@@ -86,6 +84,6 @@ class AccommodationController extends Controller
     public function destroy(Accommodation $accommodation)
     {
         $accommodation->delete();
-        return redirect()->route('accommodation.index');
+        return redirect()->route('accommodations.index');
     }
 }

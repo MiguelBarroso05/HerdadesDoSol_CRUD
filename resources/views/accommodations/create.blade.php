@@ -13,7 +13,7 @@
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            New accommodations
+                            New Accommodation
                         </h5>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                                 <div class="card">
                                     <div class="card-header pb-0">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <p class="mb-0">New Accommodations</p>
+                                            <p class="mb-0">New Accommodation</p>
                                             <div>
                                                 <a href="{{ url()->previous()}}"
                                                    class="btn btn-secondary btn-sm ms-auto">Cancel</a>

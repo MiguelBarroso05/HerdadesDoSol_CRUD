@@ -7,10 +7,10 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
-                        <h6>Accommodations table</h6>
+                        <h6>Accommodations Table</h6>
                         <a href="{{route('accommodations.create')}}" class="btn btn-primary btn-sm mr-2"
                            data-toggle="tooltip" data-original-title="Show accommodation">
-                            Create new accommodation
+                            Create New Accommodation
                         </a>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -23,11 +23,9 @@
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Room Type</th>
-                                    <th class="text-secondary opacity-7"></th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Size</th>
-                                    <th class="text-secondary opacity-7"></th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Last Update</th>
@@ -48,7 +46,7 @@
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{$accommodation->room_type_id->name}}</span>
+                                            <span class="text-secondary text-xs font-weight-bold">{{$accommodation->roomType->name}}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{$accommodation->size}}</span>
@@ -57,11 +55,11 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{$accommodation->updated_at}}</span>
                                         </td>
                                         <td class="align-middle d-flex justify-content-evenly">
-                                            <a href="{{route('accommodation.edit', $accommodation)}}" class="btn btn-secondary btn-sm mr-2"
+                                            <a href="{{route('accommodations.edit', $accommodation)}}" class="btn btn-secondary btn-sm mr-2"
                                                data-toggle="tooltip" data-original-title="Edit accommodation">
                                                 Edit
                                             </a>
-                                            <form action="{{route('accommodation.destroy', ['accommodation' => $accommodation])}}" method="POST">
+                                            <form action="{{route('accommodations.destroy', ['accommodation' => $accommodation])}}" method="POST">
                                                 @method('DElETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-secondary btn-sm"

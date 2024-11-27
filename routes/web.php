@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AccommodationController;
 use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\RoomTypeController;
+use App\Http\Controllers\AccommodationTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -24,6 +24,7 @@ Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('gue
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 
 Route::group(['middleware' => 'auth'], function () {
+    #Routes Dashboard
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
     #Routes Users
@@ -32,15 +33,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/users/{user}/recover', [UserController::class, 'recover'])->name('users.recover');
     Route::resource('users', UserController::class);
 
-    #Routes RoomTypes
-    Route::resource('room_types', RoomTypeController::class);
-
     #Routes Accommodations
     Route::resource('accommodations', AccommodationController::class);
+    Route::resource('accommodation_types', AccommodationTypeController::class);
 
     #Routes Activities
     Route::resource('activities', ActivityController::class);
 
-    Route::get('/{page}', [PageController::class, 'index'])->name('page');
+    #Routes Logout
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('/{page}', [PageController::class, 'index'])->name('page'); //Altera esta m**da Marco!!
 });

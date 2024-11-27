@@ -11,6 +11,10 @@ class Accommodation extends Model
     /** @use HasFactory<\Database\Factories\AccommodationFactory> */
     use HasFactory, softDeletes;
 
-    protected $fillable = ['size','room_type_id', 'description'];
+    protected $fillable = ['size','accommodation_type_id', 'description'];
 
+    public function accommodationType()
+    {
+        return $this->belongsTo(AccommodationType::class, 'accommodation_type_id');
+    }
 }
