@@ -84,7 +84,7 @@ class AccommodationTypeController extends Controller
 
             $accommodation_type->update($dataToUpdate);
 
-            return redirect()->route('users.index')->with('success', 'User updated successfully');
+            return redirect()->route('accommodation_type.index')->with('success', 'Accommodation Type updated successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error updating user: ' . $e->getMessage());
         }

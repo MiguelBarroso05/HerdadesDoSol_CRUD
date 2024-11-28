@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('activity_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('img')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
