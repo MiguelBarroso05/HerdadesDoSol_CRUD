@@ -28,7 +28,8 @@
                                         <div>
                                             <a href="{{route('activities.index')}}"
                                                class="btn btn-secondary btn-sm ms-auto">Cancel</a>
-                                            <a type="submit" class="btn btn-primary btn-sm ms-auto" href="{{route('activities.edit', $activity)}}">Edit
+                                            <a type="submit" class="btn btn-primary btn-sm ms-auto"
+                                               href="{{route('activities.edit', $activity)}}">Edit
                                             </a>
                                         </div>
                                     </div>
@@ -52,7 +53,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @include('layouts.footers.footer')
                         </div>
+    @include('layouts.footers.footer')
 @endsection
 

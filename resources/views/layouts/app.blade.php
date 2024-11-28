@@ -33,7 +33,9 @@
         @if (in_array(request()->route()->getName(), ['login', 'register', 'recover-password']))
             @yield('content')
         @else
-            @if (!in_array(request()->route()->getName(), ['profile']))
+            @if (in_array(request()->route()->getName(), ['home']))
+                <div></div>
+            @elseif (!in_array(request()->route()->getName(), ['profile']))
                 <div class="min-height-300 bg-primary position-absolute w-100"></div>
             @elseif (in_array(request()->route()->getName(), ['profile']))
                 <div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
@@ -41,12 +43,14 @@
                 </div>
             @endif
             @include('layouts.navbars.auth.sidenav')
-                <main class="main-content border-radius-lg">
+                <main class="main-content border-radius-lg mt-0 flex-grow-1">
                     @yield('content')
                 </main>
             @include('components.fixed-plugin')
         @endif
     @endauth
+
+    @include('layouts.footers.footer')
 
     <!--   Core JS Files   -->
     <script src="assets/js/core/popper.min.js"></script>

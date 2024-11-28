@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Accommodation extends Model
 {
     /** @use HasFactory<\Database\Factories\AccommodationFactory> */
-    use HasFactory, softDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = ['size','accommodation_type_id', 'description'];
 
-    public function accommodationType()
+    public function accommodation_types()
     {
         return $this->belongsTo(AccommodationType::class, 'accommodation_type_id');
     }

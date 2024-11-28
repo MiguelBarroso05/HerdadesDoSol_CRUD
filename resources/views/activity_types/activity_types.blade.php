@@ -7,10 +7,10 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
-                        <h6>Accommodations Table</h6>
-                        <a href="{{route('accommodations.create')}}" class="btn btn-primary btn-sm mr-2"
-                           data-toggle="tooltip" data-original-title="Show accommodation">
-                            Create New Accommodation
+                        <h6>Activity Types Table</h6>
+                        <a href="{{route('activity_types.create')}}" class="btn btn-primary btn-sm mr-2"
+                           data-toggle="tooltip" data-original-title="Show user">
+                            Create New Activity Type
                         </a>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -19,13 +19,7 @@
                                 <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Accommodation</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Room Type</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Size</th>
+                                        Activity Type</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Last Update</th>
@@ -33,38 +27,31 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($accommodations as $accommodation)
+                                @foreach($activity_types as $activity_type)
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    <img src="/imgs/activities/bungalow.jpg" class="avatar avatar-sm me-3" alt="#">
+                                                </div>
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Room #{{ $accommodation->id }}</h6>
+                                                    <h6 class="mb-0 text-sm">{{ $activity_type->name }}</h6>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{$accommodation->accommodation_types->name}}</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{$accommodation->size}}</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{$accommodation->updated_at}}</span>
+                                            <span class="text-secondary text-xs font-weight-bold">{{$activity_type->updated_at}}</span>
                                         </td>
                                         <td class="align-middle d-flex justify-content-evenly">
-                                            <a href="{{route('accommodations.edit', $accommodation)}}" class="btn btn-secondary btn-sm mr-2"
-                                               data-toggle="tooltip" data-original-title="Edit accommodation">
+                                            <a href="{{route('activity_types.edit', $activity_type)}}" class="btn btn-secondary btn-sm mr-2"
+                                               data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit
                                             </a>
-                                            <a href="{{route('accommodations.show', $accommodation)}}" class="btn btn-secondary btn-sm mr-2"
-                                               data-toggle="tooltip" data-original-title="Show accommodation">
-                                                Show
-                                            </a>
-                                            <form action="{{route('accommodations.destroy', ['accommodation' => $accommodation])}}" method="POST">
+                                            <form action="{{route('activity_types.destroy', ['activity_type' => $activity_type])}}" method="POST">
                                                 @method('DElETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-secondary btn-sm"
-                                                        data-toggle="tooltip" data-original-title="Delete accommodation">
+                                                        data-toggle="tooltip" data-original-title="Delete activity type">
                                                     Delete
                                                 </button>
                                             </form>
@@ -80,6 +67,4 @@
         </div>
     </div>
 @endsection
-
-
 

@@ -7,7 +7,7 @@
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="/img/team-1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                        <img src="{{ $user->img ? asset('storage/'.$user->img) : asset("/imgs/no-image.png") }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                     </div>
                 </div>
                 <div class="col-auto my-auto">
@@ -20,7 +20,7 @@
                 <div class="container-fluid py-4">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
-                            <form action="{{route('users.update', $user->id)}}" method="post">
+                            <form action="{{route('users.update', $user->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 @if(session('success'))
@@ -57,6 +57,21 @@
                                     <div class="card-body">
                                         <p class="text-uppercase text-sm">User Information</p>
                                         <div class="row">
+                                            <div>
+                                                <div class="col-md-6">
+                                                    <div class="avatar avatar-xl position-relative">
+                                                        <img
+                                                            id="profilePreview"
+                                                            src="{{ isset($user->img) ? asset('storage/' . $user->img) : asset("/imgs/no-image.png") }}"
+                                                            alt="profile_image"
+                                                            class="w-100 border-radius-lg shadow-sm">
+                                                    </div>
+                                                    <input type="file" class="form-control" name="img" id="inputGroupFile02" accept="image/*">
+                                                </div>
+                                            </div>
+
+
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input"
@@ -147,5 +162,17 @@
                             </form>
 
                         </div>
-                            @include('layouts.footers.footer')
+    @include('layouts.footers.footer')
+                        <script>
+                            document.getElementById('inputGroupFile02').addEventListener('change', function(event) {
+                                const file = event.target.files[0];
+                                if (file) {
+                                    const reader = new FileReader();
+                                    reader.onload = function(e) {
+                                        document.getElementById('profilePreview').src = e.target.result;
+                                    };
+                                    reader.readAsDataURL(file);
+                                }
+                            });
+                        </script>
 @endsection

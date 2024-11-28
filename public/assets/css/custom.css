@@ -10,6 +10,12 @@
     height: auto !important;
 }
 
+/* Home page */
+.home-image {
+    background-image: url('../../imgs/home_banner.png') !important;
+    background-size: cover;
+}
+
 
 /* Sign In page */
 .signin-image {
@@ -32,22 +38,27 @@
     }
 }
 
-/*Room Type Accommodation*/
-/* .select-container {
-     position: relative !important;
-     display: inline-block !important;
- }
-
-.select-container i {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
+/* Accommodations Type create */
+.image-option {
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: border-color 0.3s;
 }
 
-.select-container select {
-    padding-left: 30px; !* Ajuste conforme necessário *!
-}*/
+.image-option.selected {
+    border-color: orange;
+}
+
+.image-option img {
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100px !important;
+    height: 80px !important;
+    cursor: pointer;
+}
+
+
 
 

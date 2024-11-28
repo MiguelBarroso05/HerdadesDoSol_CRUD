@@ -17,7 +17,7 @@ class AccommodationController extends Controller
      */
     public function index()
     {
-        $accommodations = Accommodation::with('roomType')->get();
+        $accommodations = Accommodation::with('accommodation_types')->get();
         return view('accommodations.accommodations', compact('accommodations'));
     }
 
@@ -26,8 +26,8 @@ class AccommodationController extends Controller
      */
     public function create()
     {
-        $room_types = AccommodationType::withoutTrashed()->get();
-        return view('accommodations.create', compact('room_types'));
+        $accommodation_types = AccommodationType::withoutTrashed()->get();
+        return view('accommodations.create', compact('accommodation_types'));
     }
 
     /**
@@ -60,7 +60,8 @@ class AccommodationController extends Controller
      */
     public function edit(Accommodation $accommodation)
     {
-        return view('accommodations.edit', ['accommodation' => $accommodation]);
+        $accommodation_types = AccommodationType::withoutTrashed()->get();
+        return view('accommodations.edit', compact('accommodation','accommodation_types'));
     }
 
     /**

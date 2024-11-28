@@ -6,9 +6,6 @@
         <div class="card-body p-3">
             <div class="row gx-4">
                 <div class="col-auto">
-                    <div class="avatar avatar-xl position-relative">
-                        <img src="/img/team-1.jpg" alt="activity_image" class="w-100 border-radius-lg shadow-sm">
-                    </div>
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
@@ -31,7 +28,7 @@
                                 @endif
                                 @if($errors->any())
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <ul>
+                                        <ul class="text-white">
                                             @foreach($errors->all() as $error)
                                                 <li><strong>Error!</strong> {{ $error }}</li>
                                             @endforeach
@@ -46,7 +43,7 @@
                                         <div class="d-flex align-items-center justify-content-between">
                                             <p class="mb-0">New Accommodation</p>
                                             <div>
-                                                <a href="{{ url()->previous()}}"
+                                                <a href="{{ route('accommodations.index')}}"
                                                    class="btn btn-secondary btn-sm ms-auto">Cancel</a>
                                                 <button type="submit" class="btn btn-primary btn-sm ms-auto">Create
                                                 </button>
@@ -59,16 +56,16 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input"
-                                                           class="form-control-label">Room Type</label>
-                                                    <select class="form-control @error('name') is-invalid @enderror"
-                                                            name="room_type_id" id="room-select">
-                                                        @foreach($room_types as $room_type)
-                                                            <option value="{{$room_type->id}}">
-                                                                {{$room_type->name}}
+                                                           class="form-control-label">Accommodation Type</label>
+                                                    <select class="form-control @error('accommodation_type_id') is-invalid @enderror"
+                                                            name="accommodation_type_id" id="room-select">
+                                                        @foreach($accommodation_types as $accommodation_type)
+                                                            <option value="{{$accommodation_type->id}}">
+                                                                {{$accommodation_type->name}}
                                                             </option>
                                                         @endforeach
                                                     </select>
-                                                    @error('name')
+                                                    @error('accommodation_type_id')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -125,6 +122,6 @@
                                     </div>
                                 </div>
                             </form>
-                            @include('layouts.footers.footer')
                         </div>
+    @include('layouts.footers.footer')
 @endsection

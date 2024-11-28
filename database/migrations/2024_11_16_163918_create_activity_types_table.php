@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('accommodations', function (Blueprint $table) {
+        Schema::create('activity_types', function (Blueprint $table) {
             $table->id();
-            $table->integer('size');
-            $table->foreignId('accommodation_type_id')->constrained();
-            $table->string('description')->nullable();
+            $table->string('name');
             $table->string('img')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('accommodations');
+        Schema::dropIfExists('activity_types');
     }
 };

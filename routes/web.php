@@ -1,19 +1,34 @@
 <?php
 
-use App\Http\Controllers\AccommodationController;
-use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\AccommodationTypeController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+#Models
+use \App\Models\Activity;
+use \App\Models\Accommodation;
+use \App\Models\AccommodationType;
+
+#Controllers
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\ResetPassword;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AccommodationController;
+use App\Http\Controllers\AccommodationTypeController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\ResetPassword;
-use App\Http\Controllers\ChangePassword;
 
-Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
+#Routes HomePage
+Route::get('/', function () {
+    return view('pages.home', [
+        'accommodations' => Accommodation::all(),
+        'activities' => Activity::all(),
+        'accommodation_types' => AccommodationType::all(),
+    ]);
+})->name('home');
+
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
@@ -25,7 +40,7 @@ Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('
 
 Route::group(['middleware' => 'auth'], function () {
     #Routes Dashboard
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
 
     #Routes Users
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
@@ -39,6 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     #Routes Activities
     Route::resource('activities', ActivityController::class);
+    Route::resource('activity_types', ActivityController::class);
 
     #Routes Logout
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');

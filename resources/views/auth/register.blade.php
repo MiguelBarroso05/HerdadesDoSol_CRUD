@@ -85,5 +85,4 @@
             </div>
         </section>
     </main>
-    @include('layouts.footers.footer')
 @endsection

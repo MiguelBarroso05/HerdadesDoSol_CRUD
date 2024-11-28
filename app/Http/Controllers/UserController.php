@@ -54,13 +54,25 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-        $user = User::all()->findOrFail($id);
-        try{
-            $user->update($request->validated());
+        $user = User::findOrFail($id);
+
+        try {
+            $validated = $request->validated();
+
+            if ($request->hasFile('img')) {
+                $img = $request->file('img');
+                if ($img->isValid()) {
+                    $filename = $user->id . '_' . $user->username . '.' . $img->getClientOriginalExtension();
+                    $url = $img->storeAs('users', $filename, 'public'); // Salva a imagem
+                    $validated['img'] = $url; // Adiciona a URL no array validado
+                }
+            }
+
+            $user->update($validated); // Atualiza o usuário com todos os dados
+
             return redirect()->route('users.index')->with('success', 'User updated successfully');
-        }
-        catch(\Exception $e){
-            return redirect()->back()->with('error', $e->getMessage());
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error updating user: ' . $e->getMessage());
         }
     }
 

@@ -31,8 +31,8 @@ class AccommodationTypeController extends Controller
     {
         $validated = $request->validated();
         try{
-            $room_type = new AccommodationType($validated);
-            $room_type->save();
+            $accommodation_type = new AccommodationType($validated);
+            $accommodation_type->save();
             return redirect()->route('accommodation_types.index')->with('success', 'accommodation_types created successfully');
         }
         catch(\Exception $e){
@@ -43,17 +43,17 @@ class AccommodationTypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(AccommodationType $room_type)
+    public function show(AccommodationType $accommodation_type)
     {
-        return view('accommodation_types.show', ['room_type' => $room_type]);
+        return view('accommodation_types.show', ['accommodation_type' => $accommodation_type]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AccommodationType $room_type)
+    public function edit(AccommodationType $accommodation_type)
     {
-        return view('accommodation_types.edit', ['room_type' => $room_type]);
+        return view('accommodation_types.edit', ['accommodation_type' => $accommodation_type]);
     }
 
     /**
@@ -61,10 +61,10 @@ class AccommodationTypeController extends Controller
      */
     public function update(AccommodationTypeRequest $request, $id)
     {
-        $room_type = AccommodationType::all()->findOrFail($id);
+        $accommodation_type = AccommodationType::all()->findOrFail($id);
         try{
-            $room_type->update($request->validated());
-            return redirect()->route('accommodation_types.index')->with('success', 'Room Type updated successfully');
+            $accommodation_type->update($request->validated());
+            return redirect()->route('accommodation_types.index')->with('success', 'Accommodation Type updated successfully');
         }
         catch(\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
@@ -74,9 +74,9 @@ class AccommodationTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AccommodationType $room_type)
+    public function destroy(AccommodationType $accommodation_type)
     {
-        $room_type->delete();
+        $accommodation_type->delete();
         return redirect()->route('accommodation_types.index');
     }
 }

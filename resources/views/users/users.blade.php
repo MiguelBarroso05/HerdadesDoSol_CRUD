@@ -23,7 +23,7 @@
                                     </th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Employed
+                                        Activated/Disabled at
                                     </th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
@@ -34,7 +34,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="/img/team-2.jpg" class="avatar avatar-sm me-3" alt="#">
+                                                    <img src="{{ $user->img ? asset('storage/'.$user->img) : asset("/imgs/no-image.png") }}" class="avatar avatar-sm me-3" alt="#">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $user->username }}</h6>

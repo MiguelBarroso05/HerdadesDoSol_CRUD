@@ -385,7 +385,6 @@
             </div>
         </div>
     </div>
-    @include('layouts.footers.footer')
 @endsection
 
 @push('js')

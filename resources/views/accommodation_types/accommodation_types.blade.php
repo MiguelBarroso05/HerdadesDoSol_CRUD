@@ -10,7 +10,7 @@
                         <h6>Accommodation Types Table</h6>
                         <a href="{{route('accommodation_types.create')}}" class="btn btn-primary btn-sm mr-2"
                            data-toggle="tooltip" data-original-title="Show user">
-                            Create new accommodation Type
+                            Create New Accommodation Type
                         </a>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -31,6 +31,9 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    <img src="/imgs/accommodations/bungalow.jpg" class="avatar avatar-sm me-3" alt="#">
+                                                </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $accommodation_type->name }}</h6>
                                                 </div>

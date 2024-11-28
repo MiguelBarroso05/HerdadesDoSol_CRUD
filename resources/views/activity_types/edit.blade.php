@@ -10,14 +10,14 @@
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            New Accommodation Type
+                            New Activity Type
                         </h5>
                     </div>
                 </div>
                 <div class="container-fluid py-4">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
-                            <form method="POST" action="{{route('accommodation_types.update', $accommodation_type->id)}}">
+                            <form method="POST" action="{{route('activity_types.update', $activity_type->id)}}">
                                 @csrf
                                 @method('PUT')
                                 @if(session('success'))
@@ -42,7 +42,7 @@
                                 <div class="card">
                                     <div class="card-header pb-0">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <p class="mb-0">New Accommodation Type</p>
+                                            <p class="mb-0">New Activity Type</p>
                                             <div>
                                                 <a href="{{ url()->previous()}}"
                                                    class="btn btn-secondary btn-sm ms-auto">Cancel</a>
@@ -52,15 +52,15 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <p class="text-uppercase text-sm">Accommodation Type Information</p>
+                                        <p class="text-uppercase text-sm">Activity Type Information</p>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input"
-                                                           class="form-control-label">Accommodation Type Name</label>
+                                                           class="form-control-label">Activity Type Name</label>
                                                     <input class="form-control @error('name') is-invalid @enderror"
                                                            type="text" name="name"
-                                                           value="{{old('name', $accommodation_type->name)}}">
+                                                           value="{{old('name', $activity_type->name)}}">
                                                     @error('name')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror

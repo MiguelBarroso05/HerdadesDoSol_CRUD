@@ -23,7 +23,7 @@ class AccommodationRequest extends FormRequest
     {
         return [
             'size' => 'required|integer|min:1|max:6',
-            'room_type_id' => 'required',
+            'accommodation_type_id' => 'required',
             'description' => 'nullable|max:255',
         ];
     }
@@ -36,7 +36,7 @@ class AccommodationRequest extends FormRequest
             'size.min' => 'the size must be at least 1.',
             'size.max' => 'the size must be less than 6.',
 
-            'room_type_id.required' => 'the room type is required.',
+            'accommodation_type_id.required' => 'the accommodation type is required.',
 
             'description.max' => 'The description may not be greater than 255 characters.',
         ];
