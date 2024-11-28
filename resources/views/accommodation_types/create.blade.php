@@ -20,7 +20,7 @@
                 <div class="container-fluid py-4">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
-                            <form method="POST" action="{{route('accommodation_types.store')}}">
+                            <form method="POST" action="{{route('accommodation_types.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 @if(session('success'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -55,6 +55,9 @@
                                     </div>
                                     <div class="card-body">
                                         <p class="text-uppercase text-sm">Accommodation Type Information</p>
+                                        <div class="col-md-6">
+                                            <input type="file" class="form-control" name="img" id="inputGroupFile02" accept="image/*">
+                                        </div>
                                         <div class="row d-flex flex-row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -71,7 +74,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Select Accommodation Image</label>
-                                                    <div class="d-flex flex-wrap image-selection-group">
+                                                    <!--<div class="d-flex flex-wrap image-selection-group">
                                                         @foreach (File::files(public_path('imgs/accommodations')) as $file)
                                                                 <?php $filename = pathinfo($file, PATHINFO_BASENAME); ?>
                                                             <div class="image-option" data-value="{{ $filename }}">
@@ -85,7 +88,8 @@
                                                            value="{{ old('image') }}">
                                                     @error('image')
                                                     <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror
+                                                    @enderror-->
+
                                                 </div>
                                             </div>
                                         </div>

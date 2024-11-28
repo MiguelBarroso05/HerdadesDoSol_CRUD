@@ -6,22 +6,18 @@
         <div class="card-body p-3">
             <div class="row gx-4">
                 <div class="col-auto">
-                    <div class="avatar avatar-xl position-relative">
-                        <img src="/img/team-1.jpg" alt="activity_image" class="w-100 border-radius-lg shadow-sm">
-                    </div>
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            New activity
+                            New Activity
                         </h5>
                     </div>
                 </div>
                 <div class="container-fluid py-4">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
-                            <form method="POST" action="{{route('activities.store')}}">
-                                @csrf
+                            <form method="POST" action="{{route('activities.store')}}" enctype="multipart/form-data">                                @csrf
                                 @if(session('success'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         <strong>Success!</strong> {{ session('success') }}
@@ -57,6 +53,32 @@
                                         <p class="text-uppercase text-sm">Activity Information</p>
                                         <div class="row">
                                             <div class="col-md-6">
+                                                <label for="example-text-input"
+                                                       class="form-control-label">Activity Photo</label>
+                                                <input type="file" class="form-control" name="img" id="inputGroupFile02"
+                                                       accept="image/*">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input"
+                                                           class="form-control-label">Activity Type</label>
+                                                    <select
+                                                        class="form-control @error('activity_type_id') is-invalid @enderror"
+                                                        name="activity_type_id" id="activity-select">
+                                                        @foreach($activity_types as $activity_type)
+                                                            <option value="{{$activity_type->id}}">
+                                                                {{$activity_type->name}}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('activity_type_id')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input"
                                                            class="form-control-label">Activity Name</label>
@@ -68,6 +90,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input"
@@ -85,6 +108,5 @@
                                 </div>
                             </form>
                         </div>
-    @include('layouts.footers.footer')
 @endsection
 

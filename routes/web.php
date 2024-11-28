@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityTypeController;
 use Illuminate\Support\Facades\Route;
 
 #Models
@@ -54,7 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     #Routes Activities
     Route::resource('activities', ActivityController::class);
-    Route::resource('activity_types', ActivityController::class);
+    Route::resource('activity_types', ActivityTypeController::class);
 
     #Routes Logout
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');

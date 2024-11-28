@@ -11,5 +11,15 @@ class Activity extends Model
     /** @use HasFactory<\Database\Factories\ActivityFactory> */
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name','description'];
+    protected $fillable = [
+        'activity_type_id',
+        'name',
+        'description',
+        'img',
+    ];
+
+    public function activity_types()
+    {
+        return $this->belongsTo(ActivityType::class, 'activity_type_id');
+    }
 }

@@ -24,6 +24,7 @@ class ActivityRequest extends FormRequest
         return [
             'name' => 'required|string|min:3|max:30',
             'description' => 'nullable|max:255',
+            'img' => 'nullable|image|max:2048',
         ];
     }
 
@@ -36,6 +37,8 @@ class ActivityRequest extends FormRequest
             'name.max' => 'The name may not be greater than 30 characters.',
 
             'description.max' => 'The description may not be greater than 255 characters.',
+
+            'img.image' => 'The image must be an image.',
         ];
     }
 }

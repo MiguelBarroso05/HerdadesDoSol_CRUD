@@ -56,6 +56,16 @@
                                     </div>
                                     <div class="card-body">
                                         <p class="text-uppercase text-sm">Activity Information</p>
+                                        <div class="col-md-6">
+                                            <div class="avatar avatar-xl position-relative">
+                                                <img
+                                                    id="profilePreview"
+                                                    src="{{ isset($activity->img) ? asset('storage/' . $activity->img) : asset("/imgs/no-image.png") }}"
+                                                    alt="profile_image"
+                                                    class="w-100 border-radius-lg shadow-sm">
+                                            </div>
+                                            <input type="file" class="form-control" name="img" id="inputGroupFile02" accept="image/*">
+                                        </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">

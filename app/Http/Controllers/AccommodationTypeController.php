@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AccommodationTypeRequest;
+use App\Models\Accommodation;
 use App\Models\AccommodationType;
-use Illuminate\Http\Request;
 
 class AccommodationTypeController extends Controller
 {
@@ -31,9 +31,16 @@ class AccommodationTypeController extends Controller
     {
         $validated = $request->validated();
         try{
-            $accommodation_type = new AccommodationType($validated);
+            $accommodation_type = new Accommodation($validated);
             $accommodation_type->save();
-            return redirect()->route('accommodation_types.index')->with('success', 'accommodation_types created successfully');
+            if ($request->hasFile('img')) {
+                $img = $request->file('img');
+                $filename = $accommodation_type->id . '_' . $accommodation_type->name . '.' . $img->getClientOriginalExtension();
+                $url = $img->storeAs('accommodation_types', $filename, 'public');
+                $accommodation_type->img = $url;
+                $accommodation_type->save();
+            }
+            return redirect()->route('accommodation_types.index')->with('success', 'Accommodation type created successfully');
         }
         catch(\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());

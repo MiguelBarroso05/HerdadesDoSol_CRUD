@@ -59,16 +59,15 @@ class UserController extends Controller
         try {
             $validated = $request->validated();
 
+            $dataToUpdate = $validated;
             if ($request->hasFile('img')) {
                 $img = $request->file('img');
-                if ($img->isValid()) {
-                    $filename = $user->id . '_' . $user->username . '.' . $img->getClientOriginalExtension();
-                    $url = $img->storeAs('users', $filename, 'public'); // Salva a imagem
-                    $validated['img'] = $url; // Adiciona a URL no array validado
-                }
+                $filename = $user->id . '_' . $user->username . '.' . $img->getClientOriginalExtension();
+                $url = $img->storeAs('users', $filename, 'public');
+                $dataToUpdate['img'] = $url;
             }
 
-            $user->update($validated); // Atualiza o usuário com todos os dados
+            $user->update($dataToUpdate);
 
             return redirect()->route('users.index')->with('success', 'User updated successfully');
         } catch (\Exception $e) {
@@ -85,7 +84,7 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function recover(String $id)
+    public function recover(string $id)
     {
         //dd($id);
         $user = User::onlyTrashed()->findOrFail($id);
