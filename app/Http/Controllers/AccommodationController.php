@@ -59,7 +59,7 @@ class AccommodationController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Accommodation $accommodation)
-    {
+    { //dd($accommodation);
         $accommodation_types = AccommodationType::withoutTrashed()->get();
         return view('accommodations.edit', compact('accommodation','accommodation_types'));
     }

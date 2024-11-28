@@ -1,101 +1,134 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Profile'])
-    <div class="card shadow-lg mx-4 card-profile-bottom">
-        <div class="card-body p-3">
-            <div class="row gx-4">
-                <div class="col-auto">
-                    <div class="avatar avatar-xl position-relative">
-                        <img src="/img/team-1.jpg" alt="activity_image" class="w-100 border-radius-lg shadow-sm">
-                    </div>
-                </div>
-                <div class="col-auto my-auto">
-                    <div class="h-100">
-                        <h5 class="mb-1">
-                            {{$activity->name}}
-                        </h5>
-                    </div>
-                </div>
-                <div class="container-fluid py-4">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <form action="{{route('activities.update', $activity->id)}}" method="post">
-                                @csrf
-                                @method('PUT')
-                                @if(session('success'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <strong>Success!</strong> {{ session('success') }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                aria-label="Close"></button>
-                                    </div>
-                                @endif
-                                @if($errors->any())
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <ul class="text-white">
-                                            @foreach($errors->all() as $error)
-                                                <li><strong>Error!</strong> {{ $error }}</li>
-                                            @endforeach
-                                        </ul>
+    @include('layouts.navbars.auth.topnav', ['title' => 'Activity'])
+    <!-- Edit Form -->
+    <div class="container-fluid py-4 mt-8">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form action="{{route('activities.update', $activity->id)}}" method="post">
+                    @csrf
+                    @method('PUT')
 
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                aria-label="Close"></button>
-                                    </div>
-                                @endif
-                                <div class="card">
-                                    <div class="card-header pb-0">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <p class="mb-0">Edit Activity</p>
-                                            <div>
-                                                <a href="{{ url()->previous()}}"
-                                                   class="btn btn-secondary btn-sm ms-auto">Cancel</a>
-                                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Update
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="text-uppercase text-sm">Activity Information</p>
-                                        <div class="col-md-6">
-                                            <div class="avatar avatar-xl position-relative">
-                                                <img
-                                                    id="profilePreview"
-                                                    src="{{ isset($activity->img) ? asset('storage/' . $activity->img) : asset("/imgs/no-image.png") }}"
-                                                    alt="profile_image"
-                                                    class="w-100 border-radius-lg shadow-sm">
-                                            </div>
-                                            <input type="file" class="form-control" name="img" id="inputGroupFile02" accept="image/*">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="example-text-input"
-                                                           class="form-control-label">Activity Name</label>
-                                                    <input class="form-control @error('name') is-invalid @enderror"
-                                                           type="text" name="name"
-                                                           value="{{old('name', $activity->name)}}">
-                                                    @error('name')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="example-text-input" class="form-control-label">Description</label>
-                                                    <input
-                                                        class="form-control @error('description') is-invalid @enderror"
-                                                        name="description" type="text"
-                                                        value="{{old('description', $activity->description)}}">
-                                                    @error('description')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
+                    <!-- Activity Card -->
+                    <div class="card-body p-3">
+                        <div class="row gx-4">
+                            <!-- Activity Image Section -->
+                            <div class="col-auto">
+                                <div class="avatar avatar-xl position-relative">
+                                    <!-- Display accommodation image or a default image if not available -->
+                                    <img
+                                        src="{{ $activity->img ? asset('storage/' . $activity->img) : asset("/imgs/users/no-image.png") }}"
+                                        alt="activity_image" class="border-radius-lg shadow-sm">
+                                </div>
+                            </div>
+                            <!-- Activity Name Section -->
+                            <div class="col-auto my-auto">
+                                <div class="h-100">
+                                    <h5 class="mb-1">
+                                        {{$activity->name}}
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error Messages -->
+                    @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <ul class="text-white">
+                                @foreach($errors->all() as $error)
+                                    <li><strong>Error!</strong> {{ $error }}</li>
+                                @endforeach
+                            </ul>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    <!-- Activity Information Card -->
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <p class="mb-0">Edit Activity</p>
+
+                                <!-- Action Buttons -->
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-sm ms-auto bg-gradient-success">
+                                        Update
+                                    </button>
+                                    <a href="{{ route('activities.index')}}"
+                                       class="btn btn-secondary btn-sm ms-auto bg-gradient-danger">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="text-uppercase text-sm">Information</p>
+                            <div class="row">
+                                <!-- Activity Image Input -->
+                                <div class="col-md-6">
+                                    <label for="example-text-input"
+                                           class="form-control-label">Image</label>
+                                    <input type="file" class="form-control" name="img" id="inputGroupFile02"
+                                           accept="image/*">
+                                </div>
+
+                                <!-- Activity Name Input -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input"
+                                               class="form-control-label">Name</label>
+                                        <input class="form-control @error('name') is-invalid @enderror"
+                                               type="text" name="name"
+                                               value="{{old('name', $activity->name)}}">
+                                        @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+
+                            <div class="row">
+
+                                <!-- Activity Type Input -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input"
+                                               class="form-control-label">Type</label>
+                                        <select
+                                            class="form-control @error('activity_type_id') is-invalid @enderror"
+                                            name="activity_type_id" id="activity-select">
+                                            @foreach($activity_types as $activity_type)
+                                                <option value="{{$activity_type->id}}">
+                                                    {{$activity_type->name}}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('activity_type_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- Activity Description Input -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Description</label>
+                                        <textarea
+                                            class="form-control @error('description') is-invalid @enderror"
+                                            name="description" rows="5"
+                                            type="text"
+                                            style="resize: none;">{{old('description', $activity->description)}}</textarea>
+                                        @error('description')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-    @include('layouts.footers.footer')
+                    </div>
+                </form>
+            </div>
 @endsection
 

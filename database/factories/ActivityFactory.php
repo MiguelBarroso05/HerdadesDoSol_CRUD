@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ActivityType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class ActivityFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'activity_type_id' => ActivityType::factory(),
+            'name' => $this->faker->words(3, true),
+            'description' => $this->faker->sentence(15),
+            'img' => null,
         ];
     }
 }

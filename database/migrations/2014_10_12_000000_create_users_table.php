@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('postal')->nullable();
             $table->string('img')->nullable();
+            $table->integer('role')->default(0);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

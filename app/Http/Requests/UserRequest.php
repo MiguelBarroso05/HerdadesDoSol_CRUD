@@ -21,37 +21,58 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('user'); // Captura o ID se for atualização (rota deve incluir {id})
+        $id = $this->route('user');
 
         return [
             'username' => 'required|unique:users,username' . ($id ? ',' . $id : '') . '|min:3|max:50',
             'email' => 'required|email|unique:users,email' . ($id ? ',' . $id : ''),
             'firstname' => 'required',
             'lastname' => 'required',
-            'password' => $id ? 'nullable|min:8' : 'required|min:8', // Senha obrigatória na criação, opcional na atualização
+            'password' => $id ? 'nullable|min:8' : 'required|min:8',
             'img' => 'nullable|image|max:2048',
+            'address' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:255',
+            'country' => 'nullable|string|max:255',
+            'postal' => 'nullable|string|max:20',
         ];
     }
 
-
-    public function messages()
+    public function messages(): array
     {
         return [
+            // Username validation messages
             'username.required' => 'The username field is required.',
             'username.unique' => 'The username already exists.',
             'username.min' => 'The username must be at least 3 characters.',
             'username.max' => 'The username may not be greater than 50 characters.',
 
+            // Name validation messages
             'firstname.required' => 'The firstname field is required.',
             'lastname.required' => 'The lastname field is required.',
 
+            // Email validation messages
             'email.required' => 'The email field is required.',
             'email.unique' => 'The email already exists.',
 
+            // Password validation messages
             'password.required' => 'The password field is required.',
             'password.min' => 'The password must be at least 8 characters.',
 
-            'img.image' => 'The image must be an image.',
+            // Image validation messages
+            'img.image' => 'The image must be a valid image file.',
+            'img.max' => 'The image size may not exceed 2MB.',
+
+            // Address validation messages
+            'address.max' => 'The address may not be greater than 255 characters.',
+
+            // City validation messages
+            'city.max' => 'The city may not be greater than 255 characters.',
+
+            // Country validation messages
+            'country.max' => 'The country may not be greater than 255 characters.',
+
+            // Postal code validation messages
+            'postal.max' => 'The postal code may not be greater than 20 characters.',
         ];
     }
 }

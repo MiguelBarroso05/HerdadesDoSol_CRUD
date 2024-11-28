@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\AccommodationType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class AccommodationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'accommodation_type_id' => AccommodationType::factory(),
+            'size' => $this->faker->numberBetween(1, 6),
+            'description' => $this->faker->sentence(10),
+            'img' => null,
         ];
     }
 }

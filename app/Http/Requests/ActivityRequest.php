@@ -25,6 +25,7 @@ class ActivityRequest extends FormRequest
             'name' => 'required|string|min:3|max:30',
             'description' => 'nullable|max:255',
             'img' => 'nullable|image|max:2048',
+            'activity_type_id' => 'required'
         ];
     }
 

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ActivityTypeController;
 use Illuminate\Support\Facades\Route;
 
 #Models
@@ -17,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccommodationController;
 use App\Http\Controllers\AccommodationTypeController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
@@ -24,9 +24,9 @@ use App\Http\Controllers\PageController;
 #Routes HomePage
 Route::get('/', function () {
     return view('pages.home', [
-        'accommodations' => Accommodation::all(),
-        'activities' => Activity::all(),
-        'accommodation_types' => AccommodationType::all(),
+        'activities' => Activity::take(3)->get(),
+        'accommodations' => Accommodation::take(9)->get(),
+        'accommodation_types' => AccommodationType::take(3)->get(),
     ]);
 })->name('home');
 
@@ -41,7 +41,8 @@ Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('
 
 Route::group(['middleware' => 'auth'], function () {
     #Routes Dashboard
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/sales_overview', [HomeController::class, 'salesOverview'])->name('sales.overview');;
 
     #Routes Users
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
@@ -59,6 +60,4 @@ Route::group(['middleware' => 'auth'], function () {
 
     #Routes Logout
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
-    Route::get('/{page}', [PageController::class, 'index'])->name('page'); //Altera esta m**da Marco!!
 });

@@ -1,82 +1,78 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Profile'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Accommodation'])
+
+    <!-- Profile Card Section -->
     <div class="card shadow-lg mx-4 card-profile-bottom">
         <div class="card-body p-3">
             <div class="row gx-4">
+                <!-- Accommodation image -->
                 <div class="col-auto">
+                    <div class="avatar avatar-xl position-relative">
+                        <img src="{{ $accommodation->accommodation_types->img ? asset('storage/'.$accommodation->accommodation_types->img) : asset('/imgs/users/no-image.png') }}"
+                             alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    </div>
                 </div>
+                <!-- Accommodation id -->
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            Show Accommodation
+                            Accommodation #{{ $accommodation->id }}
                         </h5>
                     </div>
                 </div>
-                <div class="container-fluid py-4">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <form method="POST" action="{{route('accommodations.update', $accommodation->id)}}">
-                                @csrf
-                                @method('PUT')
-                                @if(session('success'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <strong>Success!</strong> {{ session('success') }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                aria-label="Close"></button>
-                                    </div>
-                                @endif
-                                @if($errors->any())
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <ul>
-                                            @foreach($errors->all() as $error)
-                                                <li><strong>Error!</strong> {{ $error }}</li>
-                                            @endforeach
-                                        </ul>
+                <!-- Buttons aligned to the right and vertically centered -->
+                <div class="col d-flex align-items-center justify-content-end">
+                    <a href="{{ route('accommodations.edit', $accommodation) }}"
+                       class="btn btn-primary btn-sm bg-gradient-warning">Edit</a>
+                    <a href="{{ route('accommodations.index') }}" class="btn btn-secondary btn-sm me-2 mx-4 bg-gradient-danger">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                aria-label="Close"></button>
-                                    </div>
-                                @endif
-                                <div class="card">
-                                    <div class="card-header pb-0">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <p class="mb-0">Show Accommodation</p>
-                                            <div>
-                                                <a href="{{ url()->previous()}}"
-                                                   class="btn btn-secondary btn-sm ms-auto">Cancel</a>
-                                                <a type="submit" class="btn btn-primary btn-sm ms-auto"
-                                                   href="{{route('accommodations.edit', $accommodation)}}">Edit
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="text-uppercase text-sm">Accommodation Information</p>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Accommodation Type</h5>
-                                                    <p>{{$accommodation->accommodation_types->name}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Size</h5>
-                                                    <p>{{$accommodation->size}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>Accommodations Description</h5>
-                                                    <p>{{$accommodation->description}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+    <div class="container-fluid py-4">
+        <div class="row">
+            <!-- Accommodation Information Section -->
+            <div class="col-md-8">
+                <div class="card h-100 d-flex flex-column justify-content-center">
+                    <div class="card-header pb-0">
+                        <h6>Accommodation Information</h6>
+                    </div>
+                    <div class="card-body d-flex align-items-center justify-content-center">
+                        <div class="w-100">
+                            <p class="text-uppercase text-sm">Basic Information</p>
+                            <div class="row">
+                                <!-- Id -->
+                                <div class="col-md-6">
+                                    <p><strong>Id:</strong> {{ $accommodation->id }}</p>
                                 </div>
-                            </form>
+                                <!-- Type -->
+                                <div class="col-md-6">
+                                    <p><strong>Type:</strong> {{ $accommodation->accommodation_types->name }}</p>
+                                </div>
+                                <!-- Size -->
+                                <div class="col-md-6">
+                                    <p><strong>Size</strong> {{ $accommodation->size }}</p>
+                                </div>
+                                <!-- Description -->
+                                <div class="col-md-6">
+                                    <p><strong>Description:</strong> {{ $accommodation->description }}</p>
+                                </div>
+                            </div>
                         </div>
-    @include('layouts.footers.footer')
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Image Section -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="{{ asset('imgs/pages/placeholder.jpg') }}" class="w-100 h-100"
+                         style="object-fit: cover; border-radius: 24px;">
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

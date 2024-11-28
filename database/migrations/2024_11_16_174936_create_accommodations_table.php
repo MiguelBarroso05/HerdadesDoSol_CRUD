@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('accommodations', function (Blueprint $table) {
             $table->id();
-            $table->integer('size');
             $table->foreignId('accommodation_type_id')->constrained();
+            $table->integer('size');
             $table->string('description')->nullable();
             $table->string('img')->nullable();
             $table->timestamps();

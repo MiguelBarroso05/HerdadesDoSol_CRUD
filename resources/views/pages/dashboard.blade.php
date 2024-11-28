@@ -3,10 +3,8 @@
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Dashboard'])
     <div class="container-fluid py-4 flex-grow-1">
-        <div class="row justify-content-between">
-            <!-- Top Horizontal Information -->
-
-            <!-- End of the 1º -->
+        <div class="row">
+            <!-- Total Users -->
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
@@ -15,12 +13,8 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Users</p>
                                     <h5 class="font-weight-bolder">
-                                        2,300
+                                        {{ $totalUsers }}
                                     </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                        since last week
-                                    </p>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
@@ -33,7 +27,8 @@
                     </div>
                 </div>
             </div>
-            <!-- End of the 2º -->
+
+            <!-- New Clients Today -->
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
@@ -42,12 +37,8 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients Today</p>
                                     <h5 class="font-weight-bolder">
-                                        +3,462
+                                        {{ $newClientsToday }}
                                     </h5>
-                                    <p class="mb-0">
-                                        <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                                        since last quarter
-                                    </p>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
@@ -60,26 +51,48 @@
                     </div>
                 </div>
             </div>
-            <!-- End of the 3º -->
-            <div class="col-xl-3 col-sm-6">
+
+            <!-- Total Activities -->
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Activities</p>
                                     <h5 class="font-weight-bolder">
-                                        $103,430
+                                        {{ $totalActivities }}
                                     </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                                    </p>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div
-                                    class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                                    class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
+                                    <i class="ni ni-app text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Accommodations -->
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Accommodations</p>
+                                    <h5 class="font-weight-bolder">
+                                        {{ $totalAccommodations }}
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div
+                                    class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                                    <i class="ni ni-building text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -87,15 +100,16 @@
                 </div>
             </div>
         </div>
-        <!-- End of the 4º -->
+
+        <!-- Sales Overview -->
         <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Sales overview</h6>
+                        <h6 class="text-capitalize">Sales Overview</h6>
                         <p class="text-sm mb-0">
                             <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">4% more</span> in 2021
+                            <span class="font-weight-bold"> {{ $salesIncreasePercentage }}% more</span> in {{ $currentYear }}
                         </p>
                     </div>
                     <div class="card-body p-3">
@@ -105,63 +119,61 @@
                     </div>
                 </div>
             </div>
-            <!-- End of the graph -->
+
+            <!-- Slideshow -->
             <div class="col-lg-5">
                 <div class="card card-carousel overflow-hidden h-100 p-0">
                     <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
                         <div class="carousel-inner border-radius-lg h-100">
-                            <div class="carousel-item h-100 active" style="background-image: url('./img/carousel-1.jpg');
-            background-size: cover;">
+                            <!-- Slide 1 -->
+                            <div class="carousel-item h-100 active app-image">
                                 <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                     <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                        <i class="ni ni-camera-compact text-dark opacity-10"></i>
+                                        <i class="ni ni-compass-04 text-dark opacity-10"></i>
                                     </div>
-                                    <h5 class="text-white mb-1">Get started with Argon</h5>
-                                    <p>There’s nothing I really wanted to do in life that I wasn’t able to get good
-                                        at.</p>
+                                    <h5 class="text-white mb-1">Discover Unique Destinations</h5>
+                                    <p>Explore handpicked accommodations and activities designed to create unforgettable memories.</p>
                                 </div>
                             </div>
-                            <div class="carousel-item h-100" style="background-image: url('./img/carousel-2.jpg');
-            background-size: cover;">
+
+                            <!-- Slide 2 -->
+                            <div class="carousel-item h-100 signup-image">
                                 <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                     <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                        <i class="ni ni-bulb-61 text-dark opacity-10"></i>
+                                        <i class="ni ni-world-2 text-dark opacity-10"></i>
                                     </div>
-                                    <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                                    <p>That’s my skill. I’m not really specifically talented at anything except for the
-                                        ability to learn.</p>
+                                    <h5 class="text-white mb-1">Adventures Tailored for You</h5>
+                                    <p>Whether you're seeking relaxation or adventure, we have the perfect experience waiting for you.</p>
                                 </div>
                             </div>
-                            <div class="carousel-item h-100" style="background-image: url('./img/carousel-3.jpg');
-            background-size: cover;">
+
+                            <!-- Slide 3 -->
+                            <div class="carousel-item h-100 home-image">
                                 <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                                     <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                        <i class="ni ni-trophy text-dark opacity-10"></i>
+                                        <i class="ni ni-send text-dark opacity-10"></i>
                                     </div>
-                                    <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                                    <p>Don’t be afraid to be wrong because you can’t learn anything from a
-                                        compliment.</p>
+                                    <h5 class="text-white mb-1">Plan Your Perfect Getaway</h5>
+                                    <p>From accommodations to activities, customize every detail to suit your needs and preferences.</p>
                                 </div>
                             </div>
                         </div>
                         <button class="carousel-control-prev w-5 me-3" type="button"
                                 data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
                         </button>
+
                         <button class="carousel-control-next w-5 me-3" type="button"
                                 data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
                         </button>
                     </div>
                 </div>
             </div>
-            <!-- End of the slideShow -->
         </div>
-        <!-- End of the 2º Part -->
-        <div class="row mt-4">
 
+        <!-- Sales by Country -->
+        <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
@@ -301,6 +313,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Categories -->
             <div class="col-lg-5">
                 <div class="card">
                     <div class="card-header pb-0 p-3">
@@ -320,10 +334,9 @@
                                     </div>
                                 </div>
                                 <div class="d-flex">
-                                    <button
-                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
-                                        <i
-                                            class="ni ni-bold-right" aria-hidden="true"></i></button>
+                                    <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
+                                        <i class="ni ni-bold-right" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </li>
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
@@ -333,8 +346,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Tickets</h6>
-                                        <span class="text-xs">123 closed, <span class="font-weight-bold">15
-                                                open</span></span>
+                                        <span class="text-xs">123 closed, <span class="font-weight-bold">15 open</span></span>
                                     </div>
                                 </div>
                                 <div class="d-flex">
@@ -388,88 +400,93 @@
 @endsection
 
 @push('js')
-    <script src="./assets/js/plugins/chartjs.min.js"></script>
+    <script src="{{asset('./assets/js/plugins/chartjs.min.js')}}"></script>
     <script>
-        var ctx1 = document.getElementById("chart-line").getContext("2d");
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/dashboard/sales_overview')
+                .then(response => response.json())
+                .then(data => {
+                    var ctx1 = document.getElementById("chart-line").getContext("2d");
 
-        var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+                    var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+                    gradientStroke1.addColorStop(1, 'rgba(251, 99, 64, 0.2)');
+                    gradientStroke1.addColorStop(0.2, 'rgba(251, 99, 64, 0.0)');
+                    gradientStroke1.addColorStop(0, 'rgba(251, 99, 64, 0)');
 
-        gradientStroke1.addColorStop(1, 'rgba(251, 99, 64, 0.2)');
-        gradientStroke1.addColorStop(0.2, 'rgba(251, 99, 64, 0.0)');
-        gradientStroke1.addColorStop(0, 'rgba(251, 99, 64, 0)');
-        new Chart(ctx1, {
-            type: "line",
-            data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                    label: "Mobile apps",
-                    tension: 0.4,
-                    borderWidth: 0,
-                    pointRadius: 0,
-                    borderColor: "#fb6340",
-                    backgroundColor: gradientStroke1,
-                    borderWidth: 3,
-                    fill: true,
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                    maxBarThickness: 6
-
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5]
+                    new Chart(ctx1, {
+                        type: "line",
+                        data: {
+                            labels: data.labels, // Labels dinâmicos do JSON
+                            datasets: [{
+                                label: "Total Sales",
+                                tension: 0.4,
+                                borderWidth: 0,
+                                pointRadius: 0,
+                                borderColor: "#fb6340",
+                                backgroundColor: gradientStroke1,
+                                borderWidth: 3,
+                                fill: true,
+                                data: data.totals, // Valores dinâmicos do JSON
+                                maxBarThickness: 6
+                            }],
                         },
-                        ticks: {
-                            display: true,
-                            padding: 10,
-                            color: '#fbfbfb',
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                }
                             },
-                        }
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                            borderDash: [5, 5]
+                            interaction: {
+                                intersect: false,
+                                mode: 'index',
+                            },
+                            scales: {
+                                y: {
+                                    grid: {
+                                        drawBorder: false,
+                                        display: true,
+                                        drawOnChartArea: true,
+                                        drawTicks: false,
+                                        borderDash: [5, 5]
+                                    },
+                                    ticks: {
+                                        display: true,
+                                        padding: 10,
+                                        color: '#fbfbfb',
+                                        font: {
+                                            size: 11,
+                                            family: "Open Sans",
+                                            style: 'normal',
+                                            lineHeight: 2
+                                        },
+                                    }
+                                },
+                                x: {
+                                    grid: {
+                                        drawBorder: false,
+                                        display: false,
+                                        drawOnChartArea: false,
+                                        drawTicks: false,
+                                        borderDash: [5, 5]
+                                    },
+                                    ticks: {
+                                        display: true,
+                                        color: '#ccc',
+                                        padding: 20,
+                                        font: {
+                                            size: 11,
+                                            family: "Open Sans",
+                                            style: 'normal',
+                                            lineHeight: 2
+                                        },
+                                    }
+                                },
+                            },
                         },
-                        ticks: {
-                            display: true,
-                            color: '#ccc',
-                            padding: 20,
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                },
-            },
+                    });
+                });
         });
     </script>
 @endpush

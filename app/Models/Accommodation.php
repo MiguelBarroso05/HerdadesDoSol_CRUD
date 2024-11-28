@@ -11,7 +11,11 @@ class Accommodation extends Model
     /** @use HasFactory<\Database\Factories\AccommodationFactory> */
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['size','accommodation_type_id', 'description'];
+    protected $fillable = [
+        'accommodation_type_id',
+        'size',
+        'description',
+    ];
 
     public function accommodation_types()
     {

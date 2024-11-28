@@ -10,7 +10,8 @@
                 <!-- User profile image -->
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="/img/team-1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                        <img src="{{ auth()->user()->img ? asset('storage/'.auth()->user()->img) : asset('/imgs/users/no-image.png') }}"
+                             class="w-100 border-radius-lg shadow-sm" alt="User image">
                     </div>
                 </div>
                 <!-- User name and role -->
@@ -123,22 +124,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Divider -->
-                            <hr class="horizontal dark">
-
-                            <!-- About Me Section -->
-                            <p class="text-uppercase text-sm">About me</p>
-                            <div class="row">
-                                <!-- About me input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">About me</label>
-                                        <input class="form-control" type="text" name="about"
-                                               value="{{ old('about', auth()->user()->about) }}">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </form>
                 </div>
@@ -147,10 +132,9 @@
             <!-- Side Image Section -->
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{{ asset('imgs/sign_in.jpg') }}" style="border-radius: 24px;">
+                    <img src="{{ asset('imgs/pages/sign_in.jpg') }}" style="border-radius: 24px;">
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

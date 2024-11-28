@@ -36,12 +36,12 @@ class AccommodationTypeController extends Controller
             $accommodation_type->save();
             if ($request->hasFile('img')) {
                 $img = $request->file('img');
-                $filename = $accommodation_type->id . '_' . $accommodation_type->name . '.' . $img->getClientOriginalExtension();
+                $filename = $accommodation_type->id . '_' . preg_replace('/\s+/', '', $accommodation_type->name) . '.' . $img->getClientOriginalExtension();
                 $url = $img->storeAs('accommodation_types', $filename, 'public');
                 $accommodation_type->img = $url;
                 $accommodation_type->save();
             }
-            return redirect()->route('accommodation_types.index')->with('success', 'Accommodation type created successfully');
+            return redirect()->route('accommodation_types.index')->with('success', 'Accommodation Yype created successfully');
         }
         catch(\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
@@ -84,7 +84,7 @@ class AccommodationTypeController extends Controller
 
             $accommodation_type->update($dataToUpdate);
 
-            return redirect()->route('accommodation_type.index')->with('success', 'Accommodation Type updated successfully');
+            return redirect()->route('accommodation_types.index')->with('success', 'Accommodation Type updated successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error updating user: ' . $e->getMessage());
         }

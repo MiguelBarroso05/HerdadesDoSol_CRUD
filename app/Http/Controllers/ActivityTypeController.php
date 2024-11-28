@@ -33,7 +33,7 @@ class ActivityTypeController extends Controller
         try{
             $activity_type = new ActivityType($validated);
             $activity_type->save();
-            return redirect()->route('activity_types.index')->with('success', 'activity_types created successfully');
+            return redirect()->route('activity_types.index')->with('success', 'Activity Type created successfully');
         }
         catch(\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());

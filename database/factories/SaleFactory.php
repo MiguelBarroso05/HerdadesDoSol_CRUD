@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class SaleFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'id_user' => User::factory(),
+            'price' => $this->faker->randomFloat(2, 10, 1000),
+            'created_at' => $this->faker->date()
         ];
     }
 }

@@ -58,8 +58,8 @@ class UserController extends Controller
 
         try {
             $validated = $request->validated();
-
             $dataToUpdate = $validated;
+
             if ($request->hasFile('img')) {
                 $img = $request->file('img');
                 $filename = $user->id . '_' . $user->username . '.' . $img->getClientOriginalExtension();
@@ -70,7 +70,8 @@ class UserController extends Controller
             $user->update($dataToUpdate);
 
             return redirect()->route('users.index')->with('success', 'User updated successfully');
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error updating user: ' . $e->getMessage());
         }
     }
