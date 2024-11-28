@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AccommodationTypeRequest;
 use App\Models\Accommodation;
 use App\Models\AccommodationType;
+use App\Models\User;
 
 class AccommodationTypeController extends Controller
 {
@@ -31,7 +32,7 @@ class AccommodationTypeController extends Controller
     {
         $validated = $request->validated();
         try{
-            $accommodation_type = new Accommodation($validated);
+            $accommodation_type = new AccommodationType($validated);
             $accommodation_type->save();
             if ($request->hasFile('img')) {
                 $img = $request->file('img');
@@ -68,13 +69,24 @@ class AccommodationTypeController extends Controller
      */
     public function update(AccommodationTypeRequest $request, $id)
     {
-        $accommodation_type = AccommodationType::all()->findOrFail($id);
-        try{
-            $accommodation_type->update($request->validated());
-            return redirect()->route('accommodation_types.index')->with('success', 'Accommodation Type updated successfully');
-        }
-        catch(\Exception $e){
-            return redirect()->back()->with('error', $e->getMessage());
+        $accommodation_type = AccommodationType::findOrFail($id);
+
+        try {
+            $validated = $request->validated();
+
+            $dataToUpdate = $validated;
+            if ($request->hasFile('img')) {
+                $img = $request->file('img');
+                $filename = $accommodation_type->id . '_' . $accommodation_type->name . '.' . $img->getClientOriginalExtension();
+                $url = $img->storeAs('accommodation_type', $filename, 'public');
+                $dataToUpdate['img'] = $url;
+            }
+
+            $accommodation_type->update($dataToUpdate);
+
+            return redirect()->route('users.index')->with('success', 'User updated successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error updating user: ' . $e->getMessage());
         }
     }
 

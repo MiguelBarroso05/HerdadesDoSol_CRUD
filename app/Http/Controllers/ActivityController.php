@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ActivityRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\Accommodation;
+use App\Models\AccommodationType;
 use App\Models\Activity;
 use App\Models\ActivityType;
 use App\Models\User;
@@ -35,7 +36,7 @@ class ActivityController extends Controller
                 $activity->img = $url;
                 $activity->save();
             }
-            return redirect()->route('activities.index')->with('success', 'Activity created successfully');
+            return redirect()->route('activities.index')->with('success', 'Accommodation type created successfully');
         }
         catch(\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());

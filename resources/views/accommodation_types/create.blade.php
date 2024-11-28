@@ -74,7 +74,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Select Accommodation Image</label>
-                                                    <!--<div class="d-flex flex-wrap image-selection-group">
+                                                    <div class="d-flex flex-wrap image-selection-group">
                                                         @foreach (File::files(public_path('imgs/accommodations')) as $file)
                                                                 <?php $filename = pathinfo($file, PATHINFO_BASENAME); ?>
                                                             <div class="image-option" data-value="{{ $filename }}">
@@ -88,7 +88,7 @@
                                                            value="{{ old('image') }}">
                                                     @error('image')
                                                     <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror-->
+                                                    @enderror
 
                                                 </div>
                                             </div>

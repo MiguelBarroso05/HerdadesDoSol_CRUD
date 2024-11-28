@@ -23,14 +23,14 @@ class AccommodationTypeRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'img' => 'image|max:2048',
+            'img' => 'nullable|image|max:2048'
         ];
     }
 
     public function messages(): array{
         return [
             'name.required' => 'the room type name is required.',
-            'img.image' => 'the room image must be an image.',
+            'img.image' => 'the image must be an image.',
         ];
     }
 }

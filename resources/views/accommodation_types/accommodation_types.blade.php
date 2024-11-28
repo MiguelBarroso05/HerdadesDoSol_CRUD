@@ -32,7 +32,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="/imgs/accommodations/bungalow.jpg" class="avatar avatar-sm me-3" alt="#">
+                                                    <img src="{{ $accommodation_type->img ? asset('storage/'.$accommodation_type->img) : asset("/imgs/no-image.png") }}" class="avatar avatar-sm me-3" alt="#">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $accommodation_type->name }}</h6>

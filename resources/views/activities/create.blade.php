@@ -17,7 +17,8 @@
                 <div class="container-fluid py-4">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
-                            <form method="POST" action="{{route('activities.store')}}" enctype="multipart/form-data">                                @csrf
+                            <form method="POST" action="{{route('activities.store')}}" enctype="multipart/form-data">
+                                @csrf
                                 @if(session('success'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         <strong>Success!</strong> {{ session('success') }}
