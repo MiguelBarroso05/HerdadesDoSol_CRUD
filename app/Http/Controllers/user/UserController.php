@@ -89,11 +89,8 @@ class UserController extends Controller
 
     public function recover(string $id)
     {
-        //dd($id);
         $user = User::onlyTrashed()->findOrFail($id);
         $user->restore();
         return redirect()->route('users.index')->with('success', 'User recovered successfully');
     }
-
-
 }

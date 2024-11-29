@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Activity extends Model
 {
-    /** @use HasFactory<\Database\Factories\ActivityFactory> */
+    /** @use HasFactory<\Database\Factories\activity\ActivityFactory> */
     use HasFactory, SoftDeletes;
 
     protected $fillable = [

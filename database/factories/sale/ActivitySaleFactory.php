@@ -1,13 +1,13 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\sale;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\activity\ActivityType>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\sale\ActivitySale>
  */
-class ActivityTypeFactory extends Factory
+class ActivitySaleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class ActivityTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word,
+            //
         ];
     }
 }
