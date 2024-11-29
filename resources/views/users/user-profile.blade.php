@@ -20,9 +20,15 @@
                         <h5 class="mb-1">
                             {{ auth()->user()->firstname ?? 'Firstname' }} {{ auth()->user()->lastname ?? 'Lastname' }}
                         </h5>
+                        @php
+                            $roles = [
+                                0 => 'Admin',
+                                1 => 'Editor',
+                                2 => 'Viewer',
+                            ];
+                        @endphp
                         <p class="mb-0 font-weight-bold text-sm">
-                            <!-- Static role placeholder -->
-                            Role
+                            {{ $roles[auth()->user()->role] ?? 'Unknown' }}
                         </p>
                     </div>
                 </div>

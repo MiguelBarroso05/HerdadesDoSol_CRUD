@@ -14,7 +14,8 @@ class ActivityController extends Controller
 {
     public function index()
     {
-        $activities = Activity::with('activity_types')->get();
+        //$activities = Activity::with('activity_types')->get();
+        $activities = Activity::with('activity_types')->paginate(6);
         return view('activities.activities', compact('activities'));
     }
 
@@ -55,8 +56,9 @@ class ActivityController extends Controller
         return view('activities.edit', compact('activity', 'activity_types'));
     }
 
-    public function update(ActivityRequest $request, Activity $activity)
+    public function update(ActivityRequest $request, $id)
     {
+        $activity = Activity::findOrFail($id);
         try {
             $validated = $request->validated();
             $dataToUpdate = $validated;

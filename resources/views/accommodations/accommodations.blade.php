@@ -98,6 +98,11 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <!-- End Users Table -->
+                            <!-- Pagination -->
+                            <div class="d-flex justify-content-center mt-4">
+                                {{ $accommodations->links('vendor.pagination.custom') }}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,8 @@ class AccommodationController extends Controller
      */
     public function index()
     {
-        $accommodations = Accommodation::with('accommodation_types')->get();
+        //$accommodations = Accommodation::with('accommodation_types')->get();
+        $accommodations = Accommodation::with('accommodation_types')->paginate(6);
         return view('accommodations.accommodations', compact('accommodations'));
     }
 
@@ -59,7 +60,7 @@ class AccommodationController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Accommodation $accommodation)
-    { //dd($accommodation);
+    {
         $accommodation_types = AccommodationType::withoutTrashed()->get();
         return view('accommodations.edit', compact('accommodation','accommodation_types'));
     }

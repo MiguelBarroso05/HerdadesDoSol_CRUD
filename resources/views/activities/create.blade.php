@@ -60,7 +60,7 @@
                                     <label for="example-text-input"
                                            class="form-control-label">Image</label>
                                     <input type="file" class="form-control" name="img" id="inputGroupFile02"
-                                           accept="image/*">
+                                           accept="image/*" value="{{old('img')}}">
                                 </div>
 
                                 <!-- Activity Type Input -->

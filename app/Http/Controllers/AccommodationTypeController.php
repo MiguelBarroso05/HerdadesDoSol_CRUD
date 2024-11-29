@@ -14,7 +14,8 @@ class AccommodationTypeController extends Controller
      */
     public function index()
     {
-        return view('accommodation_types.accommodation_types', ['accommodation_types' => AccommodationType::withoutTrashed()->get()]);
+        $accommodation_types = AccommodationType::withoutTrashed()->paginate(6);
+        return view('accommodation_types.accommodation_types', compact('accommodation_types') );
     }
 
     /**

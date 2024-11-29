@@ -6,7 +6,7 @@
     <div class="container-fluid py-4 mt-8">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form action="{{route('activities.update', $activity->id)}}" method="post">
+                <form action="{{route('activities.update', $activity->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -72,7 +72,7 @@
                                     <label for="example-text-input"
                                            class="form-control-label">Image</label>
                                     <input type="file" class="form-control" name="img" id="inputGroupFile02"
-                                           accept="image/*">
+                                           accept="image/*" value="{{old('img', $activity->img)}}">
                                 </div>
 
                                 <!-- Activity Name Input -->

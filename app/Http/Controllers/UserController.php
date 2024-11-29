@@ -14,7 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.users', ['users' => User::withTrashed()->get()]);
+        // Fetch paginated users, including soft-deleted ones
+        $users = User::withTrashed()->paginate(6);
+
+        return view('users.users', compact('users'));
     }
 
     /**
@@ -92,4 +95,6 @@ class UserController extends Controller
         $user->restore();
         return redirect()->route('users.index')->with('success', 'User recovered successfully');
     }
+
+
 }
