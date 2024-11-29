@@ -1,13 +1,13 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Accommodation Type'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'accommodation Type'])
     <div class="container-fluid py-4 mt-8">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <form action="{{ route('accommodation_types.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <!-- Accommodation Type Card -->
+                    <!-- accommodation Type Card -->
                     <div class="card-body p-3">
                         <div class="row gx-4">
                             <div class="col-auto my-auto">
@@ -32,7 +32,7 @@
                         </div>
                     @endif
 
-                    <!-- Accommodation Type Information Card -->
+                    <!-- accommodation Type Information Card -->
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center justify-content-between">
@@ -51,17 +51,17 @@
                         </div>
 
                         <div class="card-body">
-                            <!-- Accommodation Type Information Section -->
+                            <!-- accommodation Type Information Section -->
                             <p class="text-uppercase text-sm">Information</p>
                             <div class="row">
-                                <!-- Accommodation Type Image Upload -->
+                                <!-- accommodation Type Image Upload -->
                                 <div class="col-md-6">
                                     <label class="form-control-label">Image</label>
                                     <input type="file" class="form-control" name="img" id="inputGroupFile02"
                                            accept="image/*">
                                 </div>
 
-                                <!-- Accommodation Type Name Input -->
+                                <!-- accommodation Type Name Input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-control-label">Name</label>

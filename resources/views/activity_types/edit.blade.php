@@ -13,7 +13,7 @@
                     <!-- Activity Type Card -->
                     <div class="card-body p-3">
                         <div class="row gx-4">
-                            <!-- Accommodation Type Name Section -->
+                            <!-- accommodation Type Name Section -->
                             <div class="col-auto my-auto">
                                 <div class="h-100">
                                     <h5 class="mb-1">

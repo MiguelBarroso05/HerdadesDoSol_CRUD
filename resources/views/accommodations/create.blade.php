@@ -1,16 +1,16 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Accommodation'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'accommodation'])
     <div class="container-fluid py-4 mt-8">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <form method="POST" action="{{route('accommodations.store')}}">
                     @csrf
-                    <!-- Accommodation Card -->
+                    <!-- accommodation Card -->
                     <div class="card-body p-3">
                         <div class="row gx-4">
-                            <!-- Accommodation Name Section -->
+                            <!-- accommodation Name Section -->
                             <div class="col-auto my-auto">
                                 <div class="h-100">
                                     <h5 class="mb-1">
@@ -34,7 +34,7 @@
                         </div>
                     @endif
 
-                    <!-- Accommodation Information Card -->
+                    <!-- accommodation Information Card -->
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center justify-content-between">
@@ -49,11 +49,11 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <!-- Accommodation Information Section -->
+                            <!-- accommodation Information Section -->
                             <p class="text-uppercase text-sm">Information</p>
                             <div class="row">
 
-                                <!-- Accommodation Type Input -->
+                                <!-- accommodation Type Input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input"
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Accommodation Size Input -->
+                                <!-- accommodation Size Input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input"
@@ -94,7 +94,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Accommodation Description Input -->
+                                <!-- accommodation Description Input -->
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input"

@@ -88,11 +88,11 @@
                 </a>
             </li>
 
-            <!-- Accommodation Types Link -->
+            <!-- accommodation Types Link -->
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'accommodation_types.index' ? 'active' : '' }}" href="{{ route('accommodation_types.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <!-- Accommodation Types icon -->
+                        <!-- accommodation Types icon -->
                         <i class="fa-solid fa-house-circle-exclamation text-secondary text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Accommodation Types</span>

@@ -1,25 +1,24 @@
 <?php
 
+use App\Http\Controllers\accommodation\AccommodationController;
+use App\Http\Controllers\accommodation\AccommodationTypeController;
+use App\Http\Controllers\activity\ActivityController;
+use App\Http\Controllers\activity\ActivityTypeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\login\ChangePassword;
+use App\Http\Controllers\login\LoginController;
+use App\Http\Controllers\login\RegisterController;
+use App\Http\Controllers\login\ResetPassword;
+use App\Http\Controllers\user\UserController;
+use App\Http\Controllers\user\UserProfileController;
+use App\Models\accommodation\Accommodation;
+use App\Models\accommodation\AccommodationType;
+use App\Models\activity\Activity;
 use Illuminate\Support\Facades\Route;
 
 #Models
-use \App\Models\Activity;
-use \App\Models\Accommodation;
-use \App\Models\AccommodationType;
 
 #Controllers
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\ChangePassword;
-use App\Http\Controllers\ResetPassword;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AccommodationController;
-use App\Http\Controllers\AccommodationTypeController;
-use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\ActivityTypeController;
-use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PageController;
 
 #Routes HomePage
 Route::get('/', function () {

@@ -1,20 +1,20 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Accommodation'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'accommodation'])
 
     <!-- Profile Card Section -->
     <div class="card shadow-lg mx-4 card-profile-bottom">
         <div class="card-body p-3">
             <div class="row gx-4">
-                <!-- Accommodation image -->
+                <!-- accommodation image -->
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
                         <img src="{{ $accommodation->accommodation_types->img ? asset('storage/'.$accommodation->accommodation_types->img) : asset('/imgs/users/no-image.png') }}"
                              alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                     </div>
                 </div>
-                <!-- Accommodation id -->
+                <!-- accommodation id -->
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
@@ -34,7 +34,7 @@
 
     <div class="container-fluid py-4">
         <div class="row">
-            <!-- Accommodation Information Section -->
+            <!-- accommodation Information Section -->
             <div class="col-md-8">
                 <div class="card h-100 d-flex flex-column justify-content-center">
                     <div class="card-header pb-0">

@@ -36,7 +36,7 @@
             </div>
         </section>
 
-        <!-- Accommodation Types -->
+        <!-- accommodation Types -->
         <section id="accommodation-types" class="py-5 bg-light">
             <div class="container">
                 <h2 class="text-center fw-bold mb-4">Accommodation Types</h2>

@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Accommodation;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\accommodation\Accommodation;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

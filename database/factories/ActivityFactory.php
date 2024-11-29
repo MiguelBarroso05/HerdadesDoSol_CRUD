@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\ActivityType;
+use App\Models\activity\ActivityType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Activity>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\activity\Activity>
  */
 class ActivityFactory extends Factory
 {

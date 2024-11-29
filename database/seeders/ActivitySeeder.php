@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Activity;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\activity\Activity;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

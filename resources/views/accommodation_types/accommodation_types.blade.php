@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Accommodation Types'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'accommodation Types'])
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -12,7 +12,7 @@
                     </div>
                 @endif
 
-                <!-- Accommodation Types Table -->
+                <!-- accommodation Types Table -->
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
                         <h6>Accommodation Types Table</h6>
