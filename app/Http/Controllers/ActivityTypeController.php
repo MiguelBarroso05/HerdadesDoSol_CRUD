@@ -13,7 +13,7 @@ class ActivityTypeController extends Controller
      */
     public function index()
     {
-        $activity_types = ActivityType::withoutTrashed()->paginate(6);
+        $activity_types = ActivityType::withoutTrashed()->paginate(8);
         return view('activity_types.activity_types', compact('activity_types'));
     }
 

@@ -106,6 +106,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <!-- Pagination -->
                             <div class="d-flex justify-content-center mt-4">
                                 {{ $activities->links('vendor.pagination.custom') }}
                             </div>

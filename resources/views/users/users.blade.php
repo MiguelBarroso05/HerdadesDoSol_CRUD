@@ -125,7 +125,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <!-- End Users Table -->
+
                             <!-- Pagination -->
                             <div class="d-flex justify-content-center mt-4">
                                 {{ $users->links('vendor.pagination.custom') }}

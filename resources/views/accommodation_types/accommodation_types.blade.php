@@ -12,6 +12,7 @@
                     </div>
                 @endif
 
+                <!-- Accommodation Types Table -->
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
                         <h6>Accommodation Types Table</h6>
@@ -23,6 +24,8 @@
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
+
+                                <!-- Table Head -->
                                 <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -35,31 +38,39 @@
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                                 </thead>
+
+                                <!-- Table Body -->
                                 <tbody>
                                 @foreach($accommodation_types as $accommodation_type)
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
+                                                <!-- Image -->
                                                 <div>
                                                     <img
                                                         src="{{ $accommodation_type->img ? asset('storage/'.$accommodation_type->img) : asset("/imgs/users/no-image.png") }}"
                                                         class="avatar avatar-sm me-3" alt="#">
                                                 </div>
+                                                <!-- Name -->
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $accommodation_type->name }}</h6>
                                                 </div>
                                             </div>
                                         </td>
+                                        <!-- Updated At -->
                                         <td class="align-middle text-center">
                                             <span
                                                 class="text-secondary text-xs font-weight-bold">{{$accommodation_type->updated_at}}</span>
                                         </td>
+                                        <!-- Action Buttons -->
                                         <td class="align-middle d-flex justify-content-evenly">
+                                            <!-- Edit -->
                                             <a href="{{route('accommodation_types.edit', $accommodation_type)}}"
                                                class="btn btn-secondary btn-sm mr-2 bg-gradient-warning"
                                                data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit
                                             </a>
+                                            <!-- Delete -->
                                             <form
                                                 action="{{route('accommodation_types.destroy', ['accommodation_type' => $accommodation_type])}}"
                                                 method="POST">
@@ -77,6 +88,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <!-- Pagination -->
                             <div class="d-flex justify-content-center mt-4">
                                 {{ $accommodation_types->links('vendor.pagination.custom') }}
                             </div>

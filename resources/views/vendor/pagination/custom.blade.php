@@ -1,5 +1,18 @@
 @if ($paginator->hasPages())
-    <nav class="d-flex justify-content-center mt-4">
+    <nav class="d-flex flex-column align-items-center mt-4">
+        {{-- Exibir números de itens (opcional, para informar o intervalo de itens) --}}
+        <div class="">
+            <p class="small text-muted">
+                {!! __('Showing') !!}
+                <span class="fw-semibold">{{ $paginator->firstItem() }}</span>
+                {!! __('-') !!}
+                <span class="fw-semibold">{{ $paginator->lastItem() }}</span>
+                {!! __('of') !!}
+                <span class="fw-semibold">{{ $paginator->total() }}</span>
+            </p>
+        </div>
+
+        {{-- Pagination --}}
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
@@ -44,3 +57,4 @@
         </ul>
     </nav>
 @endif
+

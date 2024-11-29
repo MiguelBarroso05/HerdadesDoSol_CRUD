@@ -59,7 +59,7 @@
                                         <label for="example-text-input"
                                                class="form-control-label">Type</label>
                                         <select
-                                            class="form-control @error('accommodation_type_id') is-invalid @enderror"
+                                            class="form-control custom-dropdown @error('accommodation_type_id') is-invalid @enderror"
                                             name="accommodation_type_id" id="room-select">
                                             @foreach($accommodation_types as $accommodation_type)
                                                 <option value="{{$accommodation_type->id}}">
@@ -78,7 +78,7 @@
                                     <div class="form-group">
                                         <label for="example-text-input"
                                                class="form-control-label">Size</label>
-                                        <select class="form-control @error('size') is-invalid @enderror"
+                                        <select class="form-control custom-dropdown @error('size') is-invalid @enderror"
                                                 name="size" id="room-select">
                                             @foreach ([1, 2, 3, 4, 5, 6] as $size)
                                                 <option
@@ -95,13 +95,13 @@
                                 </div>
 
                                 <!-- Accommodation Description Input -->
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input"
                                                class="form-control-label">Description</label>
                                         <textarea
-                                            class="form-control @error('description') is-invalid @enderror"
-                                            name="description">{{old('description')}}</textarea>
+                                            class="form-control auto-resize @error('description') is-invalid @enderror"
+                                            name="description" rows="1">{{old('description')}}</textarea>
                                         @error('description')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -112,4 +112,16 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+    @push('js')
+        <script>
+            document.addEventListener('input', function (event) {
+                if (event.target.tagName === 'TEXTAREA' && event.target.classList.contains('auto-resize')) {
+                    event.target.style.height = 'auto';
+                    event.target.style.height = event.target.scrollHeight + 'px';
+                }
+            });
+        </script>
+    @endpush
 @endsection

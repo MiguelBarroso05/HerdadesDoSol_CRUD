@@ -15,7 +15,7 @@ class ActivityController extends Controller
     public function index()
     {
         //$activities = Activity::with('activity_types')->get();
-        $activities = Activity::with('activity_types')->paginate(6);
+        $activities = Activity::with('activity_types')->paginate(8);
         return view('activities.activities', compact('activities'));
     }
 

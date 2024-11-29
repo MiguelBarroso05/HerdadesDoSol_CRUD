@@ -11,6 +11,7 @@
                         <strong>Success!</strong> {{ session('success') }}
                     </div>
                 @endif
+                <!-- Create Button -->
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
                         <h6>Activity Types Table</h6>
@@ -19,9 +20,11 @@
                             Create New Activity Type
                         </a>
                     </div>
+                    <!-- Activity Type Table -->
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
+                                <!-- Table Head -->
                                 <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -34,9 +37,11 @@
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                                 </thead>
+                                <!-- Table Body -->
                                 <tbody>
                                 @foreach($activity_types as $activity_type)
                                     <tr>
+                                        <!-- Name -->
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
@@ -44,16 +49,20 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        <!-- Updated At -->
                                         <td class="align-middle text-center">
                                             <span
                                                 class="text-secondary text-xs font-weight-bold">{{$activity_type->updated_at}}</span>
                                         </td>
+                                        <!-- Action Buttons -->
                                         <td class="align-middle d-flex justify-content-evenly">
+                                            <!-- Edit -->
                                             <a href="{{route('activity_types.edit', $activity_type)}}"
                                                class="btn btn-secondary btn-sm mr-2 bg-gradient-warning"
                                                data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit
                                             </a>
+                                            <!-- Delete -->
                                             <form
                                                 action="{{route('activity_types.destroy', ['activity_type' => $activity_type])}}"
                                                 method="POST">
@@ -71,6 +80,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <!-- Pagination -->
                             <div class="d-flex justify-content-center mt-4">
                                 {{ $activity_types->links('vendor.pagination.custom') }}
                             </div>

@@ -65,7 +65,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Side Image Section -->
             <div class="col-md-4">
                 <div class="card h-100">

@@ -39,9 +39,11 @@
                                 <p class="mb-0">Create Accommodation Type</p>
                                 <!-- Action Buttons -->
                                 <div>
+                                    <!-- Create -->
                                     <button type="submit" class="btn btn-primary btn-sm ms-auto bg-gradient-success">
                                         Create
                                     </button>
+                                    <!-- Cancel -->
                                     <a href="{{ route('accommodation_types.index') }}"
                                        class="btn btn-secondary btn-sm ms-auto bg-gradient-danger">Cancel</a>
                                 </div>

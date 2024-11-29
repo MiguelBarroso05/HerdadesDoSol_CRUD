@@ -53,9 +53,11 @@
 
                                 <!-- Action Buttons -->
                                 <div>
+                                    <!-- Update -->
                                     <button type="submit" class="btn btn-primary btn-sm ms-auto bg-gradient-success">
                                         Update
                                     </button>
+                                    <!-- Cancel -->
                                     <a href="{{ route('accommodation_types.index') }}"
                                        class="btn btn-secondary btn-sm ms-auto bg-gradient-danger">Cancel</a>
                                 </div>
@@ -63,17 +65,17 @@
                         </div>
 
                         <div class="card-body">
-                            <!-- Accommodation Information Section -->
+                            <!-- Accommodation Type Information Section -->
                             <p class="text-uppercase text-sm">Information</p>
                             <div class="row">
-                                <!-- Profile Image Upload -->
+                                <!-- Accommodation Type Image Upload -->
                                 <div class="col-md-6">
                                     <label class="form-control-label">Image</label>
                                     <input type="file" class="form-control" name="img" id="inputGroupFile02"
                                            accept="image/*">
                                 </div>
 
-                                <!-- Username Input -->
+                                <!-- Accommodation Type Name Input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-control-label">Name</label>

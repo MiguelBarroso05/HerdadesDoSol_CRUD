@@ -44,8 +44,11 @@
                                 <p class="mb-0">Create Activity Type</p>
                                 <!-- Action Buttons -->
                                 <div>
-                                    <button type="submit" class="btn btn-primary btn-sm ms-auto bg-gradient-success">Create
+                                    <!-- Create -->
+                                    <button type="submit" class="btn btn-primary btn-sm ms-auto bg-gradient-success">
+                                        Create
                                     </button>
+                                    <!-- Cancel -->
                                     <a href="{{ route('activity_types.index') }}"
                                        class="btn btn-secondary btn-sm ms-auto bg-gradient-danger">Cancel</a>
                                 </div>
@@ -71,9 +74,10 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
 @endsection
 

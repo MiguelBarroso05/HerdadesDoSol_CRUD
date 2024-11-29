@@ -28,7 +28,7 @@ class ActivityTypeRequest extends FormRequest
 
     public function messages(): array{
         return [
-            'name.required' => 'the activity type name is required.',
+            'name.required' => 'The activity type name is required.',
         ];
     }
 }

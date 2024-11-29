@@ -18,7 +18,7 @@ class AccommodationController extends Controller
     public function index()
     {
         //$accommodations = Accommodation::with('accommodation_types')->get();
-        $accommodations = Accommodation::with('accommodation_types')->paginate(6);
+        $accommodations = Accommodation::with('accommodation_types')->paginate(8);
         return view('accommodations.accommodations', compact('accommodations'));
     }
 

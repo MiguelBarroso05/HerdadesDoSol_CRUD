@@ -31,12 +31,12 @@ class AccommodationRequest extends FormRequest
     public function messages()
     {
         return [
-            'size.required' => 'the size is required.',
-            'size.integer' => 'the size must be an integer.',
-            'size.min' => 'the size must be at least 1.',
-            'size.max' => 'the size must be less than 6.',
+            'size.required' => 'The size is required.',
+            'size.integer' => 'The size must be an integer.',
+            'size.min' => 'The size must be at least 1.',
+            'size.max' => 'The size must be less than 6.',
 
-            'accommodation_type_id.required' => 'the accommodation type is required.',
+            'accommodation_type_id.required' => 'The accommodation type is required.',
 
             'description.max' => 'The description may not be greater than 255 characters.',
         ];

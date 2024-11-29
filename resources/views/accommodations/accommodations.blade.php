@@ -11,6 +11,8 @@
                         <strong>Success!</strong> {{ session('success') }}
                     </div>
                 @endif
+
+                <!-- Accommodations Table -->
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
                         <h6>Accommodations Table</h6>
@@ -22,6 +24,7 @@
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
+                                <!-- Table Head -->
                                 <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -42,45 +45,57 @@
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                                 </thead>
+
+                                <!-- Table Body -->
                                 <tbody>
                                 @foreach($accommodations as $accommodation)
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
+                                                <!-- Image -->
                                                 <div>
                                                     <img
                                                         src="{{ $accommodation->accommodation_types->img ? asset('storage/'.$accommodation->accommodation_types->img) : asset('/imgs/users/no-image.png') }}"
                                                         class="avatar avatar-sm me-3" alt="User image">
                                                 </div>
+                                                <!-- Id -->
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">Accommodation
                                                         #{{ $accommodation->id }}</h6>
                                                 </div>
                                             </div>
                                         </td>
+                                        <!-- Type Name -->
                                         <td class="align-middle text-center">
                                             <span
                                                 class="text-secondary text-xs font-weight-bold">{{$accommodation->accommodation_types->name}}</span>
                                         </td>
+                                        <!-- Size -->
                                         <td class="align-middle text-center">
                                             <span
                                                 class="text-secondary text-xs font-weight-bold">{{$accommodation->size}}</span>
                                         </td>
+                                        <!-- Updated At -->
                                         <td class="align-middle text-center">
                                             <span
                                                 class="text-secondary text-xs font-weight-bold">{{$accommodation->updated_at}}</span>
                                         </td>
+
+                                        <!-- Action Buttons -->
                                         <td class="align-middle d-flex justify-content-evenly">
+                                            <!-- Show -->
                                             <a href="{{route('accommodations.show', $accommodation)}}"
                                                class="btn btn-secondary btn-sm mr-2 bg-gradient-success bg-gradient-info"
                                                data-toggle="tooltip" data-original-title="Show accommodation">
                                                 Show
                                             </a>
+                                            <!-- Edit -->
                                             <a href="{{route('accommodations.edit', $accommodation)}}"
                                                class="btn btn-secondary btn-sm mr-2 bg-gradient-warning"
                                                data-toggle="tooltip" data-original-title="Edit accommodation">
                                                 Edit
                                             </a>
+                                            <!-- Delete -->
                                             <form
                                                 action="{{route('accommodations.destroy', ['accommodation' => $accommodation])}}"
                                                 method="POST">
@@ -98,7 +113,6 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <!-- End Users Table -->
                             <!-- Pagination -->
                             <div class="d-flex justify-content-center mt-4">
                                 {{ $accommodations->links('vendor.pagination.custom') }}

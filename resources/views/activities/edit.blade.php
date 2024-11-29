@@ -98,10 +98,10 @@
                                         <label for="example-text-input"
                                                class="form-control-label">Type</label>
                                         <select
-                                            class="form-control @error('activity_type_id') is-invalid @enderror"
+                                            class="form-control custom-dropdown @error('activity_type_id') is-invalid @enderror"
                                             name="activity_type_id" id="activity-select">
                                             @foreach($activity_types as $activity_type)
-                                                <option value="{{$activity_type->id}}">
+                                                <option value="{{$activity_type->id}}" {{ old('activity_type_id', $activity->activity_type_id) == $activity_type->id ? 'selected' : '' }}>
                                                     {{$activity_type->name}}
                                                 </option>
                                             @endforeach
@@ -116,10 +116,9 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Description</label>
                                         <textarea
-                                            class="form-control @error('description') is-invalid @enderror"
-                                            name="description" rows="5"
-                                            type="text"
-                                            style="resize: none;">{{old('description', $activity->description)}}</textarea>
+                                            class="form-control auto-resize @error('description') is-invalid @enderror"
+                                            name="description" rows="1"
+                                            type="text" >{{old('description', $activity->description)}}</textarea>
                                         @error('description')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -130,5 +129,17 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+    @push('js')
+        <script>
+            document.addEventListener('input', function (event) {
+                if (event.target.tagName === 'TEXTAREA' && event.target.classList.contains('auto-resize')) {
+                    event.target.style.height = 'auto';
+                    event.target.style.height = event.target.scrollHeight + 'px';
+                }
+            });
+        </script>
+    @endpush
 @endsection
 

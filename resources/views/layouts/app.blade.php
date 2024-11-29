@@ -27,11 +27,13 @@
 
     @guest
         @yield('content')
+        @include('layouts.footers.footer')
     @endguest
 
     @auth
         @if (in_array(request()->route()->getName(), ['login', 'register', 'recover-password']))
             @yield('content')
+            @include('layouts.footers.footer')
         @else
             @if (in_array(request()->route()->getName(), ['home']))
                 <div></div>
@@ -47,8 +49,6 @@
             @include('components.fixed-plugin')
         @endif
     @endauth
-
-    @include('layouts.footers.footer')
 
     <!--   Core JS Files   -->
     <script src="{{asset("assets/js/core/popper.min.js")}}"></script>

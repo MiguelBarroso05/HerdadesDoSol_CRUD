@@ -29,8 +29,8 @@ class AccommodationTypeRequest extends FormRequest
 
     public function messages(): array{
         return [
-            'name.required' => 'the room type name is required.',
-            'img.image' => 'the image must be an image.',
+            'name.required' => 'The room type name is required.',
+            'img.image' => 'The image must be an image.',
         ];
     }
 }
