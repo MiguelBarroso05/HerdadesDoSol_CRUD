@@ -18,7 +18,7 @@ class SaleFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_user' => User::factory(),
+            'id_user' => User::inRandomOrder()->first()->id,
             'price' => $this->faker->randomFloat(2, 10, 1000),
             'created_at' => $this->faker->date()
         ];
