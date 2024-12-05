@@ -16,16 +16,11 @@ class LoginController extends Controller
      */
     public function show()
     {
-        return view('auth.login');
+        return view('pages.auth.login');
     }
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
 

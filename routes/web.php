@@ -16,10 +16,6 @@ use App\Models\accommodation\AccommodationType;
 use App\Models\activity\Activity;
 use Illuminate\Support\Facades\Route;
 
-#Models
-
-#Controllers
-
 #Routes HomePage
 Route::get('/', function () {
     return view('pages.home', [

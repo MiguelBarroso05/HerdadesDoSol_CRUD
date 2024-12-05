@@ -16,7 +16,7 @@ class AccommodationController extends Controller
     {
         //$accommodations = accommodation::with('accommodation_types')->get();
         $accommodations = Accommodation::with('accommodation_types')->paginate(8);
-        return view('accommodations.accommodations', compact('accommodations'));
+        return view('pages.accommodations.accommodations', compact('accommodations'));
     }
 
     /**
@@ -25,7 +25,7 @@ class AccommodationController extends Controller
     public function create()
     {
         $accommodation_types = AccommodationType::withoutTrashed()->get();
-        return view('accommodations.create', compact('accommodation_types'));
+        return view('pages.accommodations.create', compact('accommodation_types'));
     }
 
     /**
@@ -50,7 +50,7 @@ class AccommodationController extends Controller
      */
     public function show(Accommodation $accommodation)
     {
-        return view('accommodations.show', ['accommodation' => $accommodation]);
+        return view('pages.accommodations.show', ['accommodation' => $accommodation]);
     }
 
     /**
@@ -59,7 +59,7 @@ class AccommodationController extends Controller
     public function edit(Accommodation $accommodation)
     {
         $accommodation_types = AccommodationType::withoutTrashed()->get();
-        return view('accommodations.edit', compact('accommodation','accommodation_types'));
+        return view('pages.accommodations.edit', compact('accommodation','accommodation_types'));
     }
 
     /**

@@ -10,7 +10,7 @@ class UserProfileController extends Controller
 {
     public function show()
     {
-        return view('users.user-profile');
+        return view('pages.users.user-profile');
     }
 
     public function update(Request $request)

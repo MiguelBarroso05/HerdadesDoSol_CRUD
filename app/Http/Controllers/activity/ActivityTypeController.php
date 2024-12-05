@@ -14,7 +14,7 @@ class ActivityTypeController extends Controller
     public function index()
     {
         $activity_types = ActivityType::withoutTrashed()->paginate(8);
-        return view('activity_types.activity_types', compact('activity_types'));
+        return view('pages.activity_types.activity_types', compact('activity_types'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ActivityTypeController extends Controller
      */
     public function create()
     {
-        return view('activity_types.create');
+        return view('pages.activity_types.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class ActivityTypeController extends Controller
      */
     public function show(ActivityType $activity_type)
     {
-        return view('activity_types.show', ['activity_type' => $activity_type]);
+        return view('pages.activity_types.show', ['activity_type' => $activity_type]);
     }
 
     /**
@@ -54,7 +54,7 @@ class ActivityTypeController extends Controller
      */
     public function edit(ActivityType $activity_type)
     {
-        return view('activity_types.edit', ['activity_type' => $activity_type]);
+        return view('pages.activity_types.edit', ['activity_type' => $activity_type]);
     }
 
     /**

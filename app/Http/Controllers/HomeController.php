@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     /**
      * Fetch data for the Sales Overview Chart.
-     *
+     *  
      * @return \Illuminate\Http\JsonResponse
      */
     public function salesOverview()

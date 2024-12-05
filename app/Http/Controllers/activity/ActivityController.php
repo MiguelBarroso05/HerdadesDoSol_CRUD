@@ -13,13 +13,13 @@ class ActivityController extends Controller
     {
         //$activities = Activity::with('activity_types')->get();
         $activities = Activity::with('activity_types')->paginate(8);
-        return view('activities.activities', compact('activities'));
+        return view('pages.activities.activities', compact('activities'));
     }
 
     public function create()
     {
         $activity_types = ActivityType::withoutTrashed()->get();
-        return view('activities.create', compact('activity_types'));
+        return view('pages.activities.create', compact('activity_types'));
     }
 
     public function store(ActivityRequest $request)
@@ -44,13 +44,13 @@ class ActivityController extends Controller
 
     public function show(Activity $activity)
     {
-        return view('activities.show', ['activity' => $activity]);
+        return view('pages.activities.show', ['activity' => $activity]);
     }
 
     public function edit(Activity $activity)
     {
         $activity_types = ActivityType::withoutTrashed()->get();
-        return view('activities.edit', compact('activity', 'activity_types'));
+        return view('pages.activities.edit', compact('activity', 'activity_types'));
     }
 
     public function update(ActivityRequest $request, $id)
