@@ -18,8 +18,18 @@ class UserSeeder extends Seeder
             'firstname' => 'Admin',
             'lastname' => 'Admin',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('Passw0rd1')
+            'password' => bcrypt('Passw0rd!'),
         ]);
         User::factory(14)->create();
+
+        foreach (User::all() as $user) {
+            if ($user->id == 0) {
+                $user->assignRole('admin');
+            }
+            else{
+                $user->assignRole('client');
+            }
+        }
+
     }
 }

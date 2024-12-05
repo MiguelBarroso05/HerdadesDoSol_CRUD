@@ -33,7 +33,6 @@ class UserFactory extends Factory
             'country' => $this->faker->country,
             'postal' => $this->faker->postcode,
             'img' => null,
-            'role' => 0,
         ];
     }
 
