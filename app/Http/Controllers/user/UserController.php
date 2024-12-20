@@ -5,6 +5,8 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\UserRequest;
 use App\Models\user\User;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -15,7 +17,6 @@ class UserController extends Controller
     {
         // Fetch paginated users, including soft-deleted ones
         $users = User::withTrashed()->paginate(8);
-
         return view('pages.users.users', compact('users'));
     }
 
@@ -48,7 +49,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('pages.users.edit', ['user' => $user]);
+        $roles = Role::all()->pluck('name', 'id');
+        return view('pages.users.edit', compact('user','roles'));
     }
 
     /**
@@ -68,6 +70,8 @@ class UserController extends Controller
                 $url = $img->storeAs('users', $filename, 'public');
                 $dataToUpdate['img'] = $url;
             }
+
+            $user->roles()->sync([$request->role]);
 
             $user->update($dataToUpdate);
 
@@ -93,4 +97,5 @@ class UserController extends Controller
         $user->restore();
         return redirect()->route('users.index')->with('success', 'User recovered successfully');
     }
+
 }

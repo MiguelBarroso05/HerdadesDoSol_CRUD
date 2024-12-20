@@ -20,22 +20,14 @@
                         <h5 class="mb-1">
                             {{ auth()->user()->firstname ?? 'Firstname' }} {{ auth()->user()->lastname ?? 'Lastname' }}
                         </h5>
-                        @php
-                            $roles = [
-                                0 => 'Admin',
-                                1 => 'Editor',
-                                2 => 'Viewer',
-                            ];
-                        @endphp
                         <p class="mb-0 font-weight-bold text-sm">
-                            {{ $roles[auth()->user()->role] ?? 'Unknown' }}
+                            {{ auth()->user()->user_roles->first()->name }}
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-md-8">
@@ -56,6 +48,13 @@
                         <div class="card-body">
                             <!-- User Information Section -->
                             <p class="text-uppercase text-sm">User Information</p>
+                            <div class="row">
+                                <!-- Profile Image Upload -->
+                                <div class="col-md-6">
+                                    <label for="img" class="form-control-label">Image</label>
+                                    <input type="file" class="form-control" name="img" id="inputGroupFile02" accept="image/*">
+                                </div>
+                            </div>
                             <div class="row">
                                 <!-- Username input -->
                                 <div class="col-md-6">

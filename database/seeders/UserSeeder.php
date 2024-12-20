@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
         User::factory(14)->create();
 
         foreach (User::all() as $user) {
-            if ($user->id == 0) {
+            if ($user->id == 1) {
                 $user->assignRole('admin');
             }
             else{

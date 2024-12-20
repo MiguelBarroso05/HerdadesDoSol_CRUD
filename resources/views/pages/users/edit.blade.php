@@ -113,6 +113,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Role Input -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="role-input" class="form-control-label">Role</label>
+                                        <select class="form-control custom-dropdown @error('role') is-invalid @enderror" name="role" id="role-input">
+                                            @foreach($roles as $role_id => $role_name)
+                                                <option
+                                                    value="{{ $role_id }}"
+                                                    {{$user->user_roles->first()->name == $role_name ? 'selected' : '' }}>
+                                                    {{ $role_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <!-- Contact Information Section -->
                                 <hr class="horizontal dark">

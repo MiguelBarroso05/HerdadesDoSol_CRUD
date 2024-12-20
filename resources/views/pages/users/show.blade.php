@@ -19,15 +19,8 @@
                         <h5 class="mb-1">
                             {{ $user->firstname }} {{ $user->lastname }}
                         </h5>
-                        @php
-                            $roles = [
-                                0 => 'Admin',
-                                1 => 'Editor',
-                                2 => 'Viewer',
-                            ];
-                        @endphp
                         <p class="mb-0 font-weight-bold text-sm">
-                            {{ $roles[$user->role] ?? 'Unknown' }}
+                            {{$user->user_roles->first()->name}}
                         </p>
                     </div>
                 </div>

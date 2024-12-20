@@ -30,6 +30,9 @@
                                         User
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Role
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Status
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -57,6 +60,12 @@
                                                     <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
                                                 </div>
                                             </div>
+                                        </td>
+
+                                        <!-- User role column -->
+                                        <td class="align-middle text-center">
+                                            <span
+                                                class="text-secondary text-xs font-weight-bold">{{$user->user_roles->first()->name}}</span>
                                         </td>
 
                                         <!-- User status column -->

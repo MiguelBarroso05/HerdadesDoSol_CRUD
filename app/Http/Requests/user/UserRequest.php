@@ -30,6 +30,7 @@ class UserRequest extends FormRequest
             'lastname' => 'required',
             'password' => $id ? 'nullable|min:8' : 'required|min:8',
             'img' => 'nullable|image|max:2048',
+            'role' => 'nullable|exists:roles,id',
             'address' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:255',
             'country' => 'nullable|string|max:255',

@@ -20,6 +20,7 @@ class UserProfileController extends Controller
             'firstname' => ['max:100'],
             'lastname' => ['max:100'],
             'email' => ['required', 'email', 'max:255',  Rule::unique('users')->ignore(auth()->user()->id),],
+            'img' => 'nullable|image|max:2048',
             'address' => ['max:100'],
             'city' => ['max:100'],
             'country' => ['max:100'],
@@ -27,17 +28,28 @@ class UserProfileController extends Controller
             'about' => ['max:255']
         ]);
 
-        auth()->user()->update([
+        $user = auth()->user();
+
+        $dataToUpdate =([
             'username' => $request->get('username'),
             'firstname' => $request->get('firstname'),
             'lastname' => $request->get('lastname'),
-            'email' => $request->get('email') ,
+            'email' => $request->get('email'),
             'address' => $request->get('address'),
             'city' => $request->get('city'),
             'country' => $request->get('country'),
             'postal' => $request->get('postal'),
             'about' => $request->get('about')
         ]);
+
+        if ($request->hasFile('img')) {
+            $img = $request->file('img');
+            $filename = $user->id . '_' . $user->username . '.' . $img->getClientOriginalExtension();
+            $url = $img->storeAs('users', $filename, 'public');
+            $dataToUpdate['img'] = $url;
+        }
+
+        $user->update($dataToUpdate);
         return back()->with('succes', 'Profile succesfully updated');
     }
 }
