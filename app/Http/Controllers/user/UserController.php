@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\UserRequest;
 use App\Models\user\User;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Permission\Models\Role;
 
@@ -97,5 +98,4 @@ class UserController extends Controller
         $user->restore();
         return redirect()->route('users.index')->with('success', 'User recovered successfully');
     }
-
 }
