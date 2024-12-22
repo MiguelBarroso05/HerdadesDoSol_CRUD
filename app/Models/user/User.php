@@ -66,4 +66,20 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class, 'model_has_roles', 'model_id', 'role_id');
     }
+
+    public function toSearchableArray()
+    {
+        $array = [
+            'username' => $this->username,
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+        ];
+
+        if ($this->trashed()) {
+            $array['is_deleted'] = true;
+        }
+
+        return $array;
+    }
+
 }

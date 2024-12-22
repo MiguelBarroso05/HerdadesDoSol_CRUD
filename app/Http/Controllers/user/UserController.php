@@ -5,8 +5,8 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\UserRequest;
 use App\Models\user\User;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -14,11 +14,22 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // Fetch paginated users, including soft-deleted ones
-        $users = User::withTrashed()->paginate(8);
-        return view('pages.users.users', compact('users'));
+        $search_param = $request->query('search_users');
+
+        if ($search_param) {
+            $users = User::withTrashed()
+                ->where('username', 'like', '%' . $search_param . '%')
+                ->orWhere('firstname', 'like', '%' . $search_param . '%')
+                ->orWhere('lastname', 'like', '%' . $search_param . '%')
+                ->paginate(8);
+        }
+        else{
+            $users = User::withTrashed()->paginate(8);
+        }
+        return view('pages.users.users', compact('users', 'search_param'));
     }
 
     /**
@@ -98,4 +109,5 @@ class UserController extends Controller
         $user->restore();
         return redirect()->route('users.index')->with('success', 'User recovered successfully');
     }
+
 }

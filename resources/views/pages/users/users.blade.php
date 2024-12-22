@@ -15,9 +15,24 @@
 
                 <!-- Card container for the Users table -->
                 <div class="card mb-4">
-                    <div class="card-header pb-0">
-                        <h6>Users table</h6>
+                    <div class="card-header pb-0 d-flex justify-content-between">
+                        <div>
+                            <h6>Users table</h6>
+                        </div>
+                        <div>
+                            <form method="get">
+                                <div class="input-group">
+                                    <!-- Search Icon -->
+                                    <span class="input-group-text text-body">
+                                        <i class="fas fa-search" aria-hidden="true"></i>
+                                    </span>
+                                    <!-- Search Input -->
+                                    <input type="text" class="form-control" name="search_users" placeholder="Search...">
+                                </div>
+                            </form>
+                        </div>
                     </div>
+
                     <div class="card-body px-0 pt-0 pb-2">
                         <!-- Table wrapper with responsive design -->
                         <div class="table-responsive p-0">
