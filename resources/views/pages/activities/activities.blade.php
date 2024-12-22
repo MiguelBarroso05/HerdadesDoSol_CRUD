@@ -15,7 +15,16 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
                         <h6>Activities table</h6>
-
+                        <form method="get">
+                            <div class="input-group">
+                                <!-- Search Icon -->
+                                <span class="input-group-text text-body">
+                                        <i class="fas fa-search" aria-hidden="true"></i>
+                                    </span>
+                                <!-- Search Input -->
+                                <input type="text" class="form-control" name="search_activities" placeholder="Search...">
+                            </div>
+                        </form>
                         <!-- Button to create a new activity -->
                         <a href="{{ route('activities.create') }}" class="btn btn-primary btn-sm mr-2"
                            data-toggle="tooltip" data-original-title="Create new activity">

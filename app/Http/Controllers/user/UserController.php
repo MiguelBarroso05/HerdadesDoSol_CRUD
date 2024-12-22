@@ -25,8 +25,8 @@ class UserController extends Controller
                 ->orWhere('firstname', 'like', '%' . $search_param . '%')
                 ->orWhere('lastname', 'like', '%' . $search_param . '%')
                 ->paginate(8);
-        }
-        else{
+
+        } else {
             $users = User::withTrashed()->paginate(8);
         }
         return view('pages.users.users', compact('users', 'search_param'));
@@ -62,7 +62,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all()->pluck('name', 'id');
-        return view('pages.users.edit', compact('user','roles'));
+        return view('pages.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -88,8 +88,7 @@ class UserController extends Controller
             $user->update($dataToUpdate);
 
             return redirect()->route('users.index')->with('success', 'User updated successfully');
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error updating user: ' . $e->getMessage());
         }
     }
