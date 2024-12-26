@@ -6,14 +6,23 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\activity\ActivityRequest;
 use App\Models\activity\Activity;
 use App\Models\activity\ActivityType;
+use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        //$activities = Activity::with('activity_types')->get();
-        $activities = Activity::with('activity_types')->paginate(8);
-        return view('pages.activities.activities', compact('activities'));
+        $search_param = $request->query('search_activities');
+
+        if ($search_param) {
+            $activities = Activity::with('activity_types')
+                ->where('name', 'like', '%' . $search_param . '%')
+                ->paginate(8);
+        } else {
+            $activities = Activity::with('activity_types')->paginate(8);
+        }
+
+        return view('pages.activities.activities', compact('activities', 'search_param'));
     }
 
     public function create()

@@ -3,7 +3,6 @@
 namespace App\Models\user;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,8 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use /*HasApiTokens,*/
-        HasFactory, HasRoles, Notifiable, Searchable, SoftDeletes;
+    use /*HasApiTokens,*/ HasFactory, HasRoles, Notifiable, Searchable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -58,7 +56,7 @@ class User extends Authenticatable
      * Always encrypt the password when it is updated.
      *
      * @param $value
-     */
+    */
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
@@ -67,10 +65,5 @@ class User extends Authenticatable
     public function user_roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, 'model_has_roles', 'model_id', 'role_id');
-    }
-
-    public function addresses(): BelongsTo
-    {
-        return $this->belongsTo(Address::class, 'address_id');
     }
 }
