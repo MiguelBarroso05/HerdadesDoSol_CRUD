@@ -2,6 +2,8 @@
 
 namespace Database\Factories\user;
 
+
+use App\Models\user\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
@@ -33,6 +35,13 @@ class UserFactory extends Factory
             'country' => $this->faker->country,
             'postal' => $this->faker->postcode,
             'img' => null,
+
+            /*Alterações feitas */
+            'address_id' => Address::factory(),
+            'nif' => $this->faker->unique()->numerify('#########'),
+            'phone' => $this->faker->unique()->numerify('#########'),
+            'birth_date' => $this->faker->date(),
+            'balance' => $this->faker->numberBetween(0, 100),
         ];
     }
 

@@ -14,21 +14,28 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            /*Campos comuns entre clientes e admins*/
             $table->id();
-            $table->string('username');
+            $table->foreignId('address_id')->nullable()->constrained();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('nif')->unique()->nullable();
             $table->string('password');
-            $table->string('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('country')->nullable();
-            $table->string('postal')->nullable();
-            $table->string('img')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('phone')->nullable(); //??? Decidi meter também no staff (Se preferirem podem deixar so no cliente) ???
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
+
+            /*Campos únicos de staff*/
+            $table->string('username')->nullable(); //??? O que acham de tirar e ficar apenas com primeiro e ultimo nome? ???
+            $table->string('img')->nullable();
+
+            /*Campos únicos de cliente*/
+            $table->double('balance')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+
         });
     }
 

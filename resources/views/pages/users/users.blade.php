@@ -65,7 +65,7 @@
                                         <!-- User role column -->
                                         <td class="align-middle text-center">
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{$user->user_roles->first()->name}}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{($user->user_roles->first()->name) ? $user->user_roles->first()->name : 'none' }}</span>
                                         </td>
 
                                         <!-- User status column -->

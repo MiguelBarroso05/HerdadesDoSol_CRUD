@@ -24,17 +24,23 @@ class UserRequest extends FormRequest
         $id = $this->route('user');
 
         return [
-            'username' => 'required|unique:users,username' . ($id ? ',' . $id : '') . '|min:3|max:50',
-            'email' => 'required|email|unique:users,email' . ($id ? ',' . $id : ''),
+            /*Campos comuns entre clientes e admins*/
+            'address_id' => 'nullable',
             'firstname' => 'required',
             'lastname' => 'required',
+            'email' => 'required|email|unique:users,email' . ($id ? ',' . $id : ''),
+            'nif' => 'nullable|unique:users,nif' . ($id ? ',' . $id : ''),
             'password' => $id ? 'nullable|min:8' : 'required|min:8',
-            'img' => 'nullable|image|max:2048',
+            'birth_date' => 'nullable|date',
+            'phone' => 'nullable|min:9',
             'role' => 'nullable|exists:roles,id',
-            'address' => 'nullable|string|max:255',
-            'city' => 'nullable|string|max:255',
-            'country' => 'nullable|string|max:255',
-            'postal' => 'nullable|string|max:20',
+
+            /*Campos únicos de staff*/
+            'username' => 'nullable|unique:users,username' . ($id ? ',' . $id : '') . '|min:3|max:50',
+            'img' => 'nullable|image|max:2048',
+
+            /*Campos únicos de cliente*/
+            'balance' => 'nullable',
         ];
     }
 

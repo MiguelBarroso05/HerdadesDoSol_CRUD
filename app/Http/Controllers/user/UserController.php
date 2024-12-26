@@ -18,6 +18,7 @@ class UserController extends Controller
     {
         // Fetch paginated users, including soft-deleted ones
         $users = User::withTrashed()->paginate(8);
+
         return view('pages.users.users', compact('users'));
     }
 
