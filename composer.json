@@ -9,7 +9,6 @@
         "intervention/image": "^3.9",
         "laravel-frontend-presets/argon": "^2.0",
         "laravel/framework": "^11.9",
-        "laravel/scout": "^10.11",
         "laravel/tinker": "^2.9",
         "spatie/laravel-permission": "^6.10"
     },

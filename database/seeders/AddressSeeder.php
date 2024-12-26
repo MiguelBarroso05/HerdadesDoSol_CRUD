@@ -14,7 +14,7 @@ class AddressSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('address')->insert([
+        DB::table('addresses')->insert([
             'address' => 'Rua dos testes',
             'country' => 'Portugal',
             'city' => 'Palmela',

@@ -30,10 +30,10 @@ class UserFactory extends Factory
             'lastname' => $this->faker->lastName,
             'email' => $this->faker->unique()->safeEmail,
             'password' => Hash::make('password'),
-            'address' => $this->faker->address,
-            'city' => $this->faker->city,
-            'country' => $this->faker->country,
-            'postal' => $this->faker->postcode,
+            //'address' => $this->faker->address,
+            //'city' => $this->faker->city,
+            //'country' => $this->faker->country,
+            //'postal' => $this->faker->postcode,
             'img' => null,
 
             /*Alterações feitas */

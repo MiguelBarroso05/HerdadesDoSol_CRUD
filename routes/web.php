@@ -24,7 +24,9 @@ Route::get('/', function () {
         'accommodation_types' => AccommodationType::take(3)->get(),
     ]);
 })->name('home');
-
+Route::get('/teste',function (){
+   return view('client.profile');
+});
 Route::group(['middleware' => 'guest'], function () {
     #Routes Auth
     Route::get('/login', [LoginController::class, 'show'])->name('login');
