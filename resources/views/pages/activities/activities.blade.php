@@ -11,6 +11,12 @@
                         <strong>Success!</strong> {{ session('success') }}
                     </div>
                 @endif
+
+                @if(session('warning'))
+                    <div id="warning-alert" class="alert alert-warning alert-dismissible fade show " role="alert">
+                        <strong>Warning!</strong> {{ session('warning') }}
+                    </div>
+                @endif
                 <!-- Card container for the Activities table -->
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
@@ -21,6 +27,7 @@
                                 <span class="input-group-text text-body">
                                         <i class="fas fa-search" aria-hidden="true"></i>
                                     </span>
+
                                 <!-- Search Input -->
                                 <input type="text" class="form-control" name="search_activities" placeholder="Search...">
                             </div>
@@ -127,16 +134,16 @@
     </div>
     @push('js')
         <script>
-            <!-- Script to auto-hide the success message -->
+            <!-- Script to auto-hide the message -->
             document.addEventListener('DOMContentLoaded', function () {
-                const successAlert = document.getElementById('success-alert');
+                const alert = document.getElementById('success-alert') || document.getElementById('warning-alert');
 
-                if (successAlert) {
+                if (alert) {
                     setTimeout(() => {
-                        successAlert.classList.remove('show');
-                        successAlert.classList.add('fade');
+                        alert.classList.remove('show');
+                        alert.classList.add('fade');
                         setTimeout(() => {
-                            successAlert.remove();
+                            alert.remove();
                         }, 300); // Fade-out animation
                     }, 3000); // 3 seconds
                 }

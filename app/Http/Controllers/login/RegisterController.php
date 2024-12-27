@@ -20,9 +20,15 @@ class RegisterController extends Controller
             'password' => 'required|min:5|max:255|confirmed',
             'firstname' => 'required|max:255|min:2',
             'lastname' => 'required|max:255|min:2',
+            'address.address' => 'nullable',
+            'address.country' => 'nullable',
+            'address.city' => 'nullable',
+            'address.zip_code' => 'nullable',
             'terms' => 'required'
         ]);
+
         $user = User::create($attributes);
+
         auth()->login($user);
 
         return redirect('/dashboard');

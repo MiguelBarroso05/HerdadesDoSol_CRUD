@@ -18,11 +18,16 @@ class ActivityController extends Controller
             $activities = Activity::with('activity_types')
                 ->where('name', 'like', '%' . $search_param . '%')
                 ->paginate(8);
+
+            if ($activities->isEmpty()){
+                session()->flash('warning', 'Nothing to show with "' . $search_param . '".');
+            }
+            return view('pages.activities.activities', compact('activities', 'search_param'));
+
         } else {
             $activities = Activity::with('activity_types')->paginate(8);
+            return view('pages.activities.activities', compact('activities'));
         }
-
-        return view('pages.activities.activities', compact('activities', 'search_param'));
     }
 
     public function create()

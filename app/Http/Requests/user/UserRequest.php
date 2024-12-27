@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
 
         return [
             /*Campos comuns entre clientes e admins*/
-            'address_id' => 'nullable',
+            'address_id' => 'nullable|exists:addresses,id',
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email|unique:users,email' . ($id ? ',' . $id : ''),

@@ -4,9 +4,10 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\UserRequest;
+use App\Models\user\Address;
 use App\Models\user\User;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -14,12 +15,29 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // Fetch paginated users, including soft-deleted ones
-        $users = User::withTrashed()->paginate(8);
+        $search_param = $request->query('search_users');
 
-        return view('pages.users.users', compact('users'));
+        if ($search_param) {
+            $users = User::withTrashed()
+                ->where('username', 'like', '%' . $search_param . '%')
+                ->orWhere('firstname', 'like', '%' . $search_param . '%')
+                ->orWhere('lastname', 'like', '%' . $search_param . '%')
+                ->paginate(8);
+
+            if ($users->isEmpty()){
+                session()->flash('warning', 'Nothing to show with "' . $search_param . '".');
+            }
+            return view('pages.users.users', compact('users', 'search_param'));
+
+        } else {
+            $users = User::withTrashed()->paginate(8);
+            return view('pages.users.users', compact('users'));
+        }
+
+
     }
 
     /**
