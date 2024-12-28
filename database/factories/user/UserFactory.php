@@ -40,7 +40,7 @@ class UserFactory extends Factory
             'address_id' => Address::factory(),
             'nif' => $this->faker->unique()->numerify('#########'),
             'phone' => $this->faker->unique()->numerify('#########'),
-            'birth_date' => $this->faker->date(),
+            'birthdate' => $this->faker->date( 'Y-m-d','before:18 years ago'),
             'balance' => $this->faker->numberBetween(0, 100),
         ];
     }

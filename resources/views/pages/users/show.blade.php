@@ -47,7 +47,7 @@
                             <div class="row">
                                 <!-- Username -->
                                 <div class="col-md-6">
-                                    <p><strong>Username:</strong> {{ $user->username }}</p>
+                                    <p><strong>Username:</strong> {{ $user->username ?? 'none' }}</p>
                                 </div>
                                 <!-- Email -->
                                 <div class="col-md-6">
@@ -61,12 +61,28 @@
                                 <div class="col-md-6">
                                     <p><strong>Last name:</strong> {{ $user->lastname }}</p>
                                 </div>
+                                <!-- Birth Date -->
+                                <div class="col-md-6">
+                                    <p><strong>Birth Date:</strong> {{ $user->birthdate }}</p>
+                                </div>
+                                <!-- Nif -->
+                                <div class="col-md-6">
+                                    <p><strong>Nif:</strong> {{ $user->nif ?? 'none' }}</p>
+                                </div>
+                                <!-- Phone -->
+                                <div class="col-md-6">
+                                    <p><strong>Phone:</strong> {{ $user->phone ?? 'none' }}</p>
+                                </div>
+                                <!-- Balance -->
+                                <div class="col-md-6">
+                                    <p><strong>Balance:</strong> {{ $user->balance }}</p>
+                                </div>
                             </div>
 
                             <!-- Divider -->
                             <hr class="horizontal dark">
 
-                            <p class="text-uppercase text-sm">Contact Information</p>
+                            <p class="text-uppercase text-sm">Address Information</p>
                             <div class="row">
                                 <!-- Country -->
                                 <div class="col-md-6">

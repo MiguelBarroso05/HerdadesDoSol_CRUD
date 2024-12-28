@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->string('nif')->unique()->nullable();
             $table->string('password');
-            $table->date('birth_date')->nullable();
+            $table->date('birthdate');
             $table->string('phone')->nullable(); //??? Decidi meter também no staff (Se preferirem podem deixar so no cliente) ???
             $table->rememberToken();
             $table->softDeletes();
@@ -32,7 +32,7 @@ return new class extends Migration {
             $table->string('img')->nullable();
 
             /*Campos únicos de cliente*/
-            $table->double('balance')->nullable();
+            $table->double('balance')->nullable()->default(0);
             $table->timestamp('email_verified_at')->nullable();
 
         });

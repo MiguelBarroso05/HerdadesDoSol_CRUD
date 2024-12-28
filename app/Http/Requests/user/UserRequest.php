@@ -31,8 +31,8 @@ class UserRequest extends FormRequest
             'email' => 'required|email|unique:users,email' . ($id ? ',' . $id : ''),
             'nif' => 'nullable|unique:users,nif' . ($id ? ',' . $id : ''),
             'password' => $id ? 'nullable|min:8' : 'required|min:8',
-            'birth_date' => 'nullable|date',
-            'phone' => 'nullable|min:9',
+            'birthdate' => 'nullable|date|before:18 years ago',
+            'phone' => 'nullable|min:9|unique:users,phone' . ($id ? ',' . $id : ''),
             'role' => 'nullable|exists:roles,id',
 
             /*Campos únicos de staff*/
@@ -40,7 +40,7 @@ class UserRequest extends FormRequest
             'img' => 'nullable|image|max:2048',
 
             /*Campos únicos de cliente*/
-            'balance' => 'nullable',
+            'balance' => 'nullable|numeric|min:0',
         ];
     }
 
@@ -69,17 +69,20 @@ class UserRequest extends FormRequest
             'img.image' => 'The image must be a valid image file.',
             'img.max' => 'The image size may not exceed 2MB.',
 
-            // Address validation messages
-            'address.max' => 'The address may not be greater than 255 characters.',
+            //Birtdate validation messages
+            'birthdate.date' => 'The birthdate must be a date.',
+            'birthdate.before' => 'The birthdate must be before 18 years ago.',
 
-            // City validation messages
-            'city.max' => 'The city may not be greater than 255 characters.',
+            // Phone validation messages
+            'phone.min' => 'The phone must be at least 9 characters.',
+            'phone.unique' => 'The phone already exists.',
 
-            // Country validation messages
-            'country.max' => 'The country may not be greater than 255 characters.',
+            // Balance validation messages
+            'balance.numeric' => 'The balance must be a number.',
+            'balance.min' => 'The balance must be at least 0.',
 
-            // Postal code validation messages
-            'postal.max' => 'The postal code may not be greater than 20 characters.',
+            // Nif validation messages
+            'nif.unique' => 'The nif already exists.',
         ];
     }
 }

@@ -104,27 +104,73 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Role Input -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="role-input" class="form-control-label">Role</label>
-                                        <select class="form-control custom-dropdown @error('role') is-invalid @enderror" name="role" id="role-input">
-                                            @foreach($roles as $role_id => $role_name)
-                                                <option
-                                                    value="{{ $role_id }}"
-                                                    {{$user->user_roles->first()->name == $role_name ? 'selected' : '' }}>
-                                                    {{ $role_name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+
+                                    <!-- Role Input -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="role-input" class="form-control-label">Role</label>
+                                            <select class="form-control custom-dropdown @error('role') is-invalid @enderror" name="role" id="role-input">
+                                                @foreach($roles as $role_id => $role_name)
+                                                    <option
+                                                        value="{{ $role_id }}"
+                                                        {{$user->user_roles->first()->name == $role_name ? 'selected' : '' }}>
+                                                        {{ $role_name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Birth Date -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="birthdate" class="form-control-label">Birth Date</label>
+                                            <input class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" type="date" value="{{ old('birthdate', $user->birthdate) }}">
+                                            @error('birthdate')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Nif -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nif" class="form-control-label">Nif</label>
+                                            <input class="form-control @error('nif') is-invalid @enderror" name="nif" type="text" value="{{ old('nif', $user->nif) }}">
+                                            @error('nif')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Phone -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="phone" class="form-control-label">Phone</label>
+                                            <input class="form-control @error('phone') is-invalid @enderror" name="phone" type="text" value="{{ old('phone', $user->phone) }}">
+                                            @error('phone')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Balance -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="balance" class="form-control-label">Balance</label>
+                                            <input class="form-control @error('balance') is-invalid @enderror" name="balance" type="text" value="{{ old('balance', $user->balance) }}">
+                                            @error('balance')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
 
+
                                 <!-- Contact Information Section -->
                                 <hr class="horizontal dark">
-                                <p class="text-uppercase text-sm">Contact Information</p>
-                                <div class="row">
+                                <p class="text-uppercase text-sm">Address Information</p>
+                                {{--<div class="row">
                                     <!-- Address Input -->
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -158,7 +204,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
                     </form>
                 </div>
             </div>
