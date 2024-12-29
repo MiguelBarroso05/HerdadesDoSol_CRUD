@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\user\Address;
 use App\Models\user\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -19,9 +20,11 @@ class UserSeeder extends Seeder
             'lastname' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('Passw0rd!'),
-            'address_id' => '1',
             'birthdate' => '2002-08-13',
         ]);
+
+        User::all()->first()->addresses()->attach(Address::all()->first()->id);
+
         User::factory(14)->create();
 
         foreach (User::all() as $user) {

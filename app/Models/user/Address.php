@@ -10,9 +10,17 @@ class Address extends Model
     use HasFactory;
 
     protected $fillable = [
-        'address',
         'country',
+        'state',
         'city',
-        'zip_code',
+        'street',
+        'lot',
+        'number',
+        'zipcode',
     ];
+
+    public function users(){
+        return $this->belongsToMany(User::class, 'users_addresses')
+            ->withTimestamps();
+    }
 }

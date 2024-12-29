@@ -8,6 +8,7 @@ use App\Models\user\Address;
 use App\Models\user\User;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -27,7 +28,7 @@ class UserController extends Controller
                 ->orWhere('lastname', 'like', '%' . $search_param . '%')
                 ->paginate(8);
 
-            if ($users->isEmpty()){
+            if ($users->isEmpty()) {
                 session()->flash('warning', 'Nothing to show with "' . $search_param . '".');
             }
             return view('pages.users.users', compact('users', 'search_param'));
@@ -70,7 +71,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all()->pluck('name', 'id');
-        return view('pages.users.edit', compact('user','roles'));
+        return view('pages.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -91,13 +92,43 @@ class UserController extends Controller
                 $dataToUpdate['img'] = $url;
             }
 
+            if ($user->addresses()->count() == 0) {
+                $address = new Address($dataToUpdate['address']);
+                $address->save();
+                $user->addresses()->attach($address->id);
+            } else {
+                $userAddress = $user->addresses()
+                    ->where('country', $dataToUpdate['address']['country'])
+                    ->where('state', $dataToUpdate['address']['state'])
+                    ->where('city', $dataToUpdate['address']['city'])
+                    ->where('lot', $dataToUpdate['address']['lot'])
+                    ->where('zipcode', $dataToUpdate['address']['zipcode'])
+                    ->first();
+
+                if (!$userAddress) {
+                    $existingAddress = Address::where('country', $dataToUpdate['address']['country'])
+                        ->where('state', $dataToUpdate['address']['state'])
+                        ->where('city', $dataToUpdate['address']['city'])
+                        ->where('lot', $dataToUpdate['address']['lot'])
+                        ->where('zipcode', $dataToUpdate['address']['zipcode'])
+                        ->first();
+
+                    if ($existingAddress) {
+                        $user->addresses()->attach($existingAddress->id);
+                    } else {
+                        $newAddress = new Address($dataToUpdate['address']);
+                        $newAddress->save();
+                        $user->addresses()->attach($newAddress->id);
+                    }
+                }
+            }
+
             $user->roles()->sync([$request->role]);
 
             $user->update($dataToUpdate);
 
             return redirect()->route('users.index')->with('success', 'User updated successfully');
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error updating user: ' . $e->getMessage());
         }
     }

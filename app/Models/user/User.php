@@ -29,7 +29,14 @@ class User extends Authenticatable
         'nif',
         'phone',
         'balance',
-        'img'
+        'img',
+        'address.country',
+        'address.state',
+        'address.city',
+        'address.street',
+        'address.lot',
+        'address.number',
+        'address.zipcode',
     ];
 
     /**
@@ -64,5 +71,10 @@ class User extends Authenticatable
     public function user_roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, 'model_has_roles', 'model_id', 'role_id');
+    }
+
+    public function addresses(){
+        return $this->belongsToMany(Address::class, 'users_addresses')
+            ->withTimestamps();
     }
 }

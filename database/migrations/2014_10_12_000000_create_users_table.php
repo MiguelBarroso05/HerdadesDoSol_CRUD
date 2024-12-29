@@ -15,7 +15,6 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             /*Campos comuns entre clientes e admins*/
             $table->id();
-            $table->foreignId('address_id')->nullable()->constrained();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();

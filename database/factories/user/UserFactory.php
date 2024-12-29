@@ -37,7 +37,6 @@ class UserFactory extends Factory
             'img' => null,
 
             /*Alterações feitas */
-            'address_id' => Address::factory(),
             'nif' => $this->faker->unique()->numerify('#########'),
             'phone' => $this->faker->unique()->numerify('#########'),
             'birthdate' => $this->faker->date( 'Y-m-d','before:18 years ago'),

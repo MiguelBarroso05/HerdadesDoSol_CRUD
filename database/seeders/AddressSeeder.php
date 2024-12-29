@@ -15,11 +15,12 @@ class AddressSeeder extends Seeder
     public function run(): void
     {
         DB::table('addresses')->insert([
-            'address' => 'Rua dos testes',
             'country' => 'Portugal',
-            'city' => 'Palmela',
-            'zip_code' => '1234-567',
+            'state' => 'Porto',
+            'city' => 'Porto',
+            'street' => 'Rua dos testes',
+            'lot' => '1234-A',
+            'zipcode' => '1234-567',
         ]);
-        Address::factory(20)->create();
     }
 }

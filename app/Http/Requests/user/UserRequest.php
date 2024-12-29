@@ -25,7 +25,6 @@ class UserRequest extends FormRequest
 
         return [
             /*Campos comuns entre clientes e admins*/
-            'address_id' => 'nullable|exists:addresses,id',
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email|unique:users,email' . ($id ? ',' . $id : ''),
@@ -41,6 +40,14 @@ class UserRequest extends FormRequest
 
             /*Campos únicos de cliente*/
             'balance' => 'nullable|numeric|min:0',
+
+            'address.country' => 'nullable|string',
+            'address.state' => 'nullable|string',
+            'address.city' => 'nullable|string',
+            'address.street' => 'nullable|string',
+            'address.lot' => 'nullable|string',
+            'address.number' => 'nullable|string',
+            'address.zipcode' => 'nullable|string',
         ];
     }
 
