@@ -85,11 +85,15 @@ class UserController extends Controller
             $validated = $request->validated();
             $dataToUpdate = $validated;
 
+
+            $user->update($dataToUpdate);
+
             if ($request->hasFile('img')) {
                 $img = $request->file('img');
                 $filename = $user->id . '_' . $user->username . '.' . $img->getClientOriginalExtension();
                 $url = $img->storeAs('users', $filename, 'public');
-                $dataToUpdate['img'] = $url;
+                $user->img = $url;
+                $user->save();
             }
 
             if ($user->addresses()->count() == 0) {
@@ -105,33 +109,26 @@ class UserController extends Controller
                     ->where('zipcode', $dataToUpdate['address']['zipcode'])
                     ->first();
 
-                if (!$userAddress) {
-                    $existingAddress = Address::where('country', $dataToUpdate['address']['country'])
-                        ->where('state', $dataToUpdate['address']['state'])
-                        ->where('city', $dataToUpdate['address']['city'])
-                        ->where('lot', $dataToUpdate['address']['lot'])
-                        ->where('zipcode', $dataToUpdate['address']['zipcode'])
-                        ->first();
+                if ($userAddress) {
+                    $userAddress->update($dataToUpdate['address']);
+                } else {
 
-                    if ($existingAddress) {
-                        $user->addresses()->attach($existingAddress->id);
-                    } else {
-                        $newAddress = new Address($dataToUpdate['address']);
-                        $newAddress->save();
-                        $user->addresses()->attach($newAddress->id);
-                    }
+                    $newAddress = new Address($dataToUpdate['address']);
+                    $newAddress->save();
+                    $user->addresses()->attach($newAddress->id);
                 }
             }
 
-            $user->roles()->sync([$request->role]);
 
-            $user->update($dataToUpdate);
+            $user->roles()->sync([$request->role]);
 
             return redirect()->route('users.index')->with('success', 'User updated successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error updating user: ' . $e->getMessage());
         }
     }
+
+
 
     /**
      * Remove the specified resource from storage.
