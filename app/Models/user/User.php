@@ -75,6 +75,7 @@ class User extends Authenticatable
 
     public function addresses(){
         return $this->belongsToMany(Address::class, 'users_addresses')
-            ->withTimestamps();
+            ->withTimestamps()
+            ->orderBy('updated_at', 'desc');
     }
 }

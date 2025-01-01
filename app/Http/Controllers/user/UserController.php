@@ -85,7 +85,6 @@ class UserController extends Controller
             $validated = $request->validated();
             $dataToUpdate = $validated;
 
-
             $user->update($dataToUpdate);
 
             if ($request->hasFile('img')) {
@@ -96,38 +95,33 @@ class UserController extends Controller
                 $user->save();
             }
 
-            if ($user->addresses()->count() == 0) {
-                $address = new Address($dataToUpdate['address']);
-                $address->save();
-                $user->addresses()->attach($address->id);
-            } else {
-                $userAddress = $user->addresses()
-                    ->where('country', $dataToUpdate['address']['country'])
-                    ->where('state', $dataToUpdate['address']['state'])
-                    ->where('city', $dataToUpdate['address']['city'])
-                    ->where('lot', $dataToUpdate['address']['lot'])
-                    ->where('zipcode', $dataToUpdate['address']['zipcode'])
-                    ->first();
-
-                if ($userAddress) {
-                    $userAddress->update($dataToUpdate['address']);
-                } else {
-
-                    $newAddress = new Address($dataToUpdate['address']);
-                    $newAddress->save();
-                    $user->addresses()->attach($newAddress->id);
-                }
-            }
-
-
             $user->roles()->sync([$request->role]);
 
+            $existentAddress = DB::table('addresses')->get()
+                ->where('country', $dataToUpdate['address']['country'])
+                ->where('state', $dataToUpdate['address']['state'])
+                ->where('city', $dataToUpdate['address']['city'])
+                ->where('lot', $dataToUpdate['address']['lot'])
+                ->where('number', $dataToUpdate['address']['number'])
+                ->where('zipcode', $dataToUpdate['address']['zipcode'])
+                ->first();
+
+            if ($existentAddress) {
+                if ($user->addresses()->where('address_id', $existentAddress->id)->exists()) {
+                    $user->addresses()->updateExistingPivot($existentAddress->id, ['updated_at' => now()]);
+                }
+                else{
+                    $user->addresses()->attach($existentAddress->id);
+                }
+            } else {
+                $newAddressId = DB::table('addresses')->insertGetId($dataToUpdate['address']);
+                $user->addresses()->attach($newAddressId);
+            }
             return redirect()->route('users.index')->with('success', 'User updated successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error updating user: ' . $e->getMessage());
         }
     }
-
 
 
     /**
